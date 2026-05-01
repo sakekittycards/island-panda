@@ -420,23 +420,26 @@ body.night .island { filter: drop-shadow(0 8px 18px rgba(15, 37, 72, 0.35)) brig
 }
 
 .nav-brand span {
-  /* coral → deep orange gradient like the reference image */
-  background: linear-gradient(135deg,
-    #ffa766 0%,
-    #ff8c42 25%,
-    #ff6b35 55%,
-    #e0501e 80%,
-    #b53a14 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  position: relative;
+  color: #ff6b35;
+  text-shadow:
+    1px 2px 0 rgba(0, 0, 0, 0.35),
+    0 4px 8px rgba(0, 0, 0, 0.35);
+}
 
-  /* navy 3D drop-shadow for sticker pop */
-  filter:
-    drop-shadow(3px 3px 0 #1d3a6b)
-    drop-shadow(4px 5px 0 #0f2548)
-    drop-shadow(0 6px 10px rgba(0, 0, 0, 0.5));
+/* light-blue wavy underline beneath the wordmark, like the reference */
+.nav-brand span::after {
+  content: "";
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: -6px;
+  height: 8px;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 8' preserveAspectRatio='none'><path d='M2,4 Q10,1 20,4 T40,4 T60,4 T78,4' stroke='%237ec9e5' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  opacity: 0.95;
 }
 
 @keyframes brandGradientFlow {
@@ -473,28 +476,38 @@ body.night .island { filter: drop-shadow(0 8px 18px rgba(15, 37, 72, 0.35)) brig
   font-size: 1.35rem;
   color: #fef0c5;
   text-decoration: none;
-  padding: 13px 22px;
-  border-radius: 999px;
-  transition: background 0.25s, color 0.25s, transform 0.15s;
+  padding: 10px 20px;
+  transition: color 0.25s, transform 0.15s;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
 }
 
+/* vertical pipe separator after every nav-link except the last (which is the CTA) */
+.nav-link + .nav-link::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 22%;
+  bottom: 22%;
+  width: 1px;
+  background: rgba(255, 248, 214, 0.35);
+}
+
+/* coral underline that grows in on hover/active */
 .nav-link::after {
   content: "";
   position: absolute;
-  left: 22px;
-  right: 22px;
-  bottom: 6px;
+  left: 20px;
+  right: 20px;
+  bottom: 2px;
   height: 3px;
   border-radius: 999px;
-  background: linear-gradient(90deg, #ffd97a, var(--coral), #ffb347);
+  background: var(--coral);
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .nav-link:hover {
-  background: rgba(255, 255, 255, 0.18);
   color: #ffffff;
   transform: translateY(-1px);
 }
@@ -502,9 +515,8 @@ body.night .island { filter: drop-shadow(0 8px 18px rgba(15, 37, 72, 0.35)) brig
 .nav-link:hover::after { transform: scaleX(1); }
 
 .nav-link.active {
-  color: #ffd97a;
+  color: #ffffff;
   font-weight: 700;
-  background: rgba(0, 0, 0, 0.18);
 }
 .nav-link.active::after { transform: scaleX(1); }
 

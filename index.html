@@ -607,27 +607,47 @@
     <div class="nav-jungle" aria-hidden="true"></div>
 
     <div class="nav-lava" aria-hidden="true">
-      <!-- ============ Branch hanging across the nav with a chameleon ============ -->
+      <!-- ============ Bamboo branch crossing the nav, with rope ties + chameleon ============ -->
       <svg class="nav-branch" viewBox="0 0 1200 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <!-- thick branch — drawn as a filled shape (not just a stroke) so the bark reads at any size -->
-        <!-- main branch growing in from the left edge, sweeping down across the nav -->
+        <!-- main bamboo pole — golden tan with subtle highlight -->
         <path d="M-20,30 Q200,40 480,80 Q740,120 1020,135 Q1140,140 1220,138
                  L1220,156 Q1140,158 1020,153 Q740,138 480,98 Q200,58 -20,48 Z"
-              fill="#6b4626"/>
-        <!-- darker bark shadow along the bottom edge -->
+              fill="#d4a263"/>
+        <!-- bamboo highlight band along the top -->
+        <path d="M-20,30 Q200,40 480,80 Q740,120 1020,135 Q1140,140 1220,138
+                 L1220,144 Q1140,146 1020,141 Q740,126 480,86 Q200,46 -20,36 Z"
+              fill="#f5d090" opacity="0.85"/>
+        <!-- darker shadow along bottom edge -->
         <path d="M-20,46 Q200,56 480,96 Q740,134 1020,151 Q1140,156 1220,156
                  L1220,156 Q1140,158 1020,153 Q740,138 480,98 Q200,58 -20,48 Z"
-              fill="#3e2917" opacity="0.55"/>
-        <!-- bark notches along the length -->
-        <g fill="#3e2917" opacity="0.6">
-          <ellipse cx="60"   cy="38" rx="6" ry="1.5"/>
-          <ellipse cx="200"  cy="46" rx="6" ry="1.5"/>
-          <ellipse cx="340"  cy="60" rx="6" ry="1.5"/>
-          <ellipse cx="480"  cy="86" rx="6" ry="1.5"/>
-          <ellipse cx="620"  cy="108" rx="6" ry="1.5"/>
-          <ellipse cx="760"  cy="124" rx="6" ry="1.5"/>
-          <ellipse cx="900"  cy="138" rx="6" ry="1.5"/>
-          <ellipse cx="1040" cy="146" rx="6" ry="1.5"/>
+              fill="#7a4a2a" opacity="0.7"/>
+
+        <!-- rope ties at the bamboo segment joints -->
+        <g>
+          <!-- joint 1 (around x=180) -->
+          <ellipse cx="180" cy="44" rx="11" ry="11" fill="#5a3818"/>
+          <ellipse cx="180" cy="42" rx="10" ry="9.5" fill="#7a4a2a"/>
+          <line x1="172" y1="38" x2="188" y2="50" stroke="#3a1c08" stroke-width="0.6" opacity="0.6"/>
+          <line x1="172" y1="42" x2="188" y2="46" stroke="#3a1c08" stroke-width="0.6" opacity="0.6"/>
+          <line x1="172" y1="46" x2="188" y2="42" stroke="#3a1c08" stroke-width="0.6" opacity="0.6"/>
+          <!-- joint 2 (around x=460, midway) -->
+          <ellipse cx="460" cy="86" rx="13" ry="13" fill="#5a3818"/>
+          <ellipse cx="460" cy="84" rx="12" ry="11" fill="#7a4a2a"/>
+          <line x1="450" y1="80" x2="470" y2="92" stroke="#3a1c08" stroke-width="0.7" opacity="0.6"/>
+          <line x1="450" y1="84" x2="470" y2="88" stroke="#3a1c08" stroke-width="0.7" opacity="0.6"/>
+          <line x1="450" y1="88" x2="470" y2="84" stroke="#3a1c08" stroke-width="0.7" opacity="0.6"/>
+          <!-- joint 3 (around x=760) -->
+          <ellipse cx="760" cy="122" rx="12" ry="12" fill="#5a3818"/>
+          <ellipse cx="760" cy="120" rx="11" ry="10" fill="#7a4a2a"/>
+          <line x1="751" y1="116" x2="769" y2="128" stroke="#3a1c08" stroke-width="0.6" opacity="0.6"/>
+          <line x1="751" y1="120" x2="769" y2="124" stroke="#3a1c08" stroke-width="0.6" opacity="0.6"/>
+          <line x1="751" y1="124" x2="769" y2="120" stroke="#3a1c08" stroke-width="0.6" opacity="0.6"/>
+          <!-- joint 4 (around x=1040) -->
+          <ellipse cx="1040" cy="138" rx="11" ry="11" fill="#5a3818"/>
+          <ellipse cx="1040" cy="136" rx="10" ry="9.5" fill="#7a4a2a"/>
+          <line x1="1032" y1="132" x2="1048" y2="144" stroke="#3a1c08" stroke-width="0.6" opacity="0.6"/>
+          <line x1="1032" y1="136" x2="1048" y2="140" stroke="#3a1c08" stroke-width="0.6" opacity="0.6"/>
+          <line x1="1032" y1="140" x2="1048" y2="136" stroke="#3a1c08" stroke-width="0.6" opacity="0.6"/>
         </g>
 
         <!-- twig sprigs sticking up with leaves (drawn behind the chameleon path) -->

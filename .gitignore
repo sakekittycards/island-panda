@@ -1,0 +1,17 @@
+# Python helper scripts (not part of the site)
+_*.py
+_*.md
+
+# Photo backups (originals before compression)
+photos/_originals/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Python cache
+__pycache__/
+*.pyc

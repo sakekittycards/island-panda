@@ -120,7 +120,7 @@ body.night .island { filter: drop-shadow(0 8px 18px rgba(15, 37, 72, 0.35)) brig
   border: 0;
 }
 
-/* ---------- nav: jungle canopy ---------- */
+/* ---------- nav: clean modern restaurant header ---------- */
 .nav {
   position: sticky;
   top: 0;
@@ -128,14 +128,24 @@ body.night .island { filter: drop-shadow(0 8px 18px rgba(15, 37, 72, 0.35)) brig
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 38px 44px 38px;   /* extra top/bottom so bamboo doesn't clip text */
-  background:
-    radial-gradient(ellipse 70% 100% at 50% 50%, rgba(15, 50, 30, 0.55), rgba(15, 50, 30, 0.3) 60%, transparent 100%),
-    linear-gradient(180deg, #1f5a35 0%, #2a6a42 50%, #1a4a2e 100%);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 4px 18px rgba(15, 37, 72, 0.25);
+  padding: 28px 56px;
+  background: linear-gradient(180deg, #25593b 0%, #1f4a32 100%);
+  box-shadow: 0 2px 12px rgba(15, 37, 72, 0.18);
   overflow: hidden;
+}
+
+/* very subtle leaf texture overlay — low opacity, doesn't compete with content */
+.nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.10;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 200'><g fill='%23ffffff'><path d='M40,60 Q90,30 140,55 Q90,80 40,60 Z'/><path d='M44,60 Q90,62 138,55' stroke='%23ffffff' stroke-width='0.8' fill='none' opacity='0.6'/><path d='M260,30 Q310,8 360,28 Q310,52 260,30 Z'/><path d='M264,30 Q310,32 358,28' stroke='%23ffffff' stroke-width='0.8' fill='none' opacity='0.6'/><path d='M180,150 Q230,128 280,148 Q230,170 180,150 Z'/><path d='M420,80 Q470,55 520,78 Q470,100 420,80 Z'/><path d='M424,80 Q470,82 518,78' stroke='%23ffffff' stroke-width='0.8' fill='none' opacity='0.6'/><path d='M500,160 Q550,138 600,158 Q550,180 500,160 Z'/></g></svg>");
+  background-size: 600px auto;
+  background-repeat: repeat-x;
+  background-position: center;
 }
 
 /* dense banana leaf wallpaper — cartoon overlapping leaves as a CSS background */
@@ -405,41 +415,28 @@ body.night .island { filter: drop-shadow(0 8px 18px rgba(15, 37, 72, 0.35)) brig
 .nav-brand, .nav-links { position: relative; z-index: 1; }
 
 .nav-brand {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 18px;
   text-decoration: none;
-  font-family: 'Lobster', cursive;
-  font-weight: 400;
-  font-size: 2.6rem;
-  letter-spacing: 0.005em;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: -0.01em;
   line-height: 1;
   text-transform: none;
-  transition: transform 0.25s ease;
-  padding-top: 4px;
+  color: #ff8c42;
+  transition: opacity 0.2s;
 }
+
+.nav-brand:hover { opacity: 0.92; }
 
 .nav-brand span {
-  position: relative;
-  color: #ff6b35;
-  text-shadow:
-    1px 2px 0 rgba(0, 0, 0, 0.35),
-    0 4px 8px rgba(0, 0, 0, 0.35);
-}
-
-/* light-blue wavy underline beneath the wordmark, like the reference */
-.nav-brand span::after {
-  content: "";
-  position: absolute;
-  left: 6%;
-  right: 6%;
-  bottom: -6px;
-  height: 8px;
-  background-image:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 8' preserveAspectRatio='none'><path d='M2,4 Q10,1 20,4 T40,4 T60,4 T78,4' stroke='%237ec9e5' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  opacity: 0.95;
+  /* clean solid coral, gentle shadow for legibility on the green */
+  color: #ff8c42;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
 @keyframes brandGradientFlow {
@@ -458,103 +455,91 @@ body.night .island { filter: drop-shadow(0 8px 18px rgba(15, 37, 72, 0.35)) brig
 }
 
 .nav-brand img {
-  height: 124px;
+  height: 96px;
   width: auto;
   filter: drop-shadow(0 4px 10px rgba(15, 37, 72, 0.22));
 }
 
 .nav-links {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .nav-link {
   position: relative;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 600;
-  font-size: 1.35rem;
-  color: #fef0c5;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  color: #f3ede0;
   text-decoration: none;
-  padding: 10px 20px;
-  transition: color 0.25s, transform 0.15s;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+  padding: 10px 18px;
+  transition: color 0.2s;
 }
 
-/* vertical pipe separator after every nav-link except the last (which is the CTA) */
-.nav-link + .nav-link::before {
-  content: "";
-  position: absolute;
-  left: -1px;
-  top: 22%;
-  bottom: 22%;
-  width: 1px;
-  background: rgba(255, 248, 214, 0.35);
-}
-
-/* coral underline that grows in on hover/active */
+/* coral underline that fades in on hover/active */
 .nav-link::after {
   content: "";
   position: absolute;
-  left: 20px;
-  right: 20px;
+  left: 18px;
+  right: 18px;
   bottom: 2px;
-  height: 3px;
-  border-radius: 999px;
+  height: 2px;
   background: var(--coral);
   transform: scaleX(0);
   transform-origin: center;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.25s ease;
 }
 
 .nav-link:hover {
   color: #ffffff;
-  transform: translateY(-1px);
 }
 
 .nav-link:hover::after { transform: scaleX(1); }
 
 .nav-link.active {
   color: #ffffff;
-  font-weight: 700;
+  font-weight: 600;
 }
 .nav-link.active::after { transform: scaleX(1); }
 
 .nav-cta {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 1.35rem;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
   color: var(--white);
-  background: var(--coral);
+  background: #f5793b;
   text-decoration: none;
-  padding: 14px 30px;
+  padding: 11px 22px;
   border-radius: 999px;
-  margin-left: 10px;
-  box-shadow: 0 5px 14px rgba(255, 140, 66, 0.4);
-  transition: transform 0.15s, box-shadow 0.2s;
+  margin-left: 12px;
+  transition: background 0.2s, transform 0.15s;
 }
 
 .nav-cta:hover {
+  background: #ff6b35;
   transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(255, 140, 66, 0.5);
 }
 
 @media (max-width: 900px) {
-  .nav { padding: 32px 22px; }
-  .nav-brand { font-size: 2.05rem; gap: 12px; }
-  .nav-brand img { height: 92px; }
-  .nav-link { padding: 10px 16px; font-size: 1.1rem; }
-  .nav-cta { padding: 11px 22px; font-size: 1.1rem; }
-  .nav-bamboo { height: 16px; }
+  .nav { padding: 22px 28px; }
+  .nav-brand { font-size: 1.6rem; gap: 14px; }
+  .nav-brand img { height: 72px; }
+  .nav-link { padding: 9px 14px; font-size: 1rem; }
+  .nav-cta { padding: 10px 18px; font-size: 1rem; }
 }
 
 @media (max-width: 540px) {
-  .nav { padding: 26px 14px; }
+  .nav { padding: 16px 18px; }
   .nav-brand span { display: none; }
-  .nav-brand img { height: 76px; }
-  .nav-link { padding: 8px 12px; font-size: 1rem; }
-  .nav-cta { padding: 9px 18px; font-size: 1rem; }
-  .nav-bamboo { height: 14px; }
+  .nav-brand img { height: 56px; }
+  .nav-link { padding: 8px 12px; font-size: 0.95rem; }
+  .nav-cta { padding: 9px 16px; font-size: 0.95rem; }
+  .nav-links { gap: 4px; }
 }
 
 @media (max-width: 540px) {

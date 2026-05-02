@@ -566,9 +566,14 @@ body.night .island { filter: drop-shadow(0 8px 18px rgba(15, 37, 72, 0.35)) brig
 }
 
 /* ---------- ocean background ---------- */
+/* ocean scene confined to the hero area — scrolls away naturally instead of
+   ghost-floating across every section below */
 .ocean-bg {
-  position: fixed;
-  inset: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;

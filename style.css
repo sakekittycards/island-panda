@@ -832,11 +832,12 @@ body.night .lighthouse-beacon {
 }
 
 /* sea turtle — Sanibel signature, swims slowly across the foreground water */
-.seaturtle {
+.seaturtle { display: none; }
+.seaturtle-disabled-orig {
   position: absolute;
-  bottom: 38px;          /* clearly under the wave surface, foreground water */
+  bottom: 38px;
   left: -80px;
-  width: 32px;           /* small — distant turtle far from viewer */
+  width: 32px;
   height: auto;
   z-index: 6;
   opacity: 0;
@@ -856,8 +857,9 @@ body.night .lighthouse-beacon {
   100% { transform: translate(25vw, 0)    rotate(0deg);  opacity: 0;   }
 }
 
-/* crab — small, sidles a short distance along the foreground beach */
-.crab {
+/* crab — disabled per user feedback */
+.crab { display: none; }
+.crab-disabled-orig {
   position: absolute;
   bottom: 92px;
   left: 6vw;

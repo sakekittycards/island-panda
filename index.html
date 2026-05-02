@@ -57,6 +57,21 @@
     <!-- horizon line — where sky meets distant sea -->
     <div class="horizon"></div>
 
+    <!-- shooting star — only visible at night, streaks diagonally across the sky -->
+    <svg class="shooting-star" viewBox="0 0 90 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="trailgrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"  stop-color="#ffffff" stop-opacity="0"/>
+          <stop offset="60%" stop-color="#ffffff" stop-opacity="0.5"/>
+          <stop offset="92%" stop-color="#ffffff" stop-opacity="1"/>
+          <stop offset="100%" stop-color="#fff8d6" stop-opacity="1"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,8 L84,8" stroke="url(#trailgrad)" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="84" cy="8" r="4.5" fill="#fff8d6" opacity="0.35"/>
+      <circle cx="84" cy="8" r="2.6" fill="#ffffff"/>
+    </svg>
+
     <!-- birds -->
     <svg class="bird bird-1" viewBox="0 0 60 22" xmlns="http://www.w3.org/2000/svg">
       <path d="M2,16 Q14,2 30,12 Q46,2 58,16" stroke="#1d3a6b" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>

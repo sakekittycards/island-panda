@@ -1944,6 +1944,18 @@ html { scroll-padding-top: 80px; }
   text-shadow: none;
 }
 
+/* lift dark headlines so they're readable on dawn/dusk/night skies */
+body.dawn .section-title.dark,
+body.dusk .section-title.dark {
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+body.night .section-title.dark {
+  color: #fef0c5;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+}
+
 .story-card {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(14px);

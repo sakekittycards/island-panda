@@ -1502,23 +1502,5 @@
       });
     })();
   </script>
-
-  <!-- ============================================================
-       DEV PREVIEW MODE — REMOVE THIS BLOCK AT OFFICIAL LAUNCH
-       Intercepts tel:/mailto: clicks so preview-link visitors don't
-       blow up the owner's phone/email before the site is finalized.
-       ============================================================ -->
-  <script>
-    document.addEventListener('click', function (e) {
-      var a = e.target.closest('a[href^="tel:"], a[href^="mailto:"]');
-      if (!a) return;
-      e.preventDefault();
-      alert(
-        "Hey! Thanks for checking out our preview site. \n\n" +
-        "We're putting the finishing touches on — full contact details will be live when we officially launch. \n\n" +
-        "In the meantime, come visit us in person at 2003 Periwinkle Way, Sanibel, FL!"
-      );
-    });
-  </script>
 </body>
 </html>

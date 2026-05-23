@@ -1555,13 +1555,23 @@ html { scroll-padding-top: 80px; }
 }
 
 .btn-primary {
-  background: var(--coral);
+  background: linear-gradient(180deg, var(--coral) 0%, var(--coral-deep) 100%);
   color: var(--white);
-  box-shadow: 0 6px 18px rgba(255, 140, 66, 0.4);
+  font-weight: 700;
+  box-shadow:
+    0 8px 22px rgba(255, 107, 53, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -2px 0 rgba(122, 38, 8, 0.18);
+  text-shadow: 0 1px 0 rgba(122, 38, 8, 0.32);
+  letter-spacing: 0.005em;
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(255, 140, 66, 0.5);
+  box-shadow:
+    0 14px 30px rgba(255, 107, 53, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -2px 0 rgba(122, 38, 8, 0.22);
+  background: linear-gradient(180deg, #ff9a4f 0%, #ff5a1f 100%);
 }
 
 .btn-secondary {
@@ -2311,7 +2321,8 @@ body.night .section-title.dark {
 .eyebrow.closed .dot { animation: none; opacity: 0.85; }
 
 /* ---------- menu page ---------- */
-.menu-page { background: linear-gradient(180deg, var(--sky-light) 0%, #eaf6fb 40%, #f7eccf 100%); }
+/* Menu inherits body's day/dawn/dusk/night gradient from the top of this file —
+   no static override here, so the menu evolves with the homepage time-of-day. */
 .menu-page .ocean-bg { display: none; }
 
 .menu-hero {
@@ -2656,7 +2667,7 @@ body.night .section-title--dark { color: #fef0c5; }
 }
 
 .section-head {
-  margin: 0 auto 48px;
+  margin: 0 auto 36px;
   max-width: 760px;
 }
 .section-head--center { text-align: center; }
@@ -2671,25 +2682,10 @@ body.night .section-title--dark { color: #fef0c5; }
 }
 .section-lede--light { color: rgba(255, 255, 255, 0.85); }
 
-/* ---------- reveal animation ---------- */
-/* Opt-in: only hides if JS adds .js-reveal to <html>, so no-JS and stitched
-   screenshots still show content. */
-.js-reveal [data-reveal] {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.js-reveal [data-reveal][data-reveal-delay="1"] { transition-delay: 0.12s; }
-.js-reveal [data-reveal][data-reveal-delay="2"] { transition-delay: 0.24s; }
-.js-reveal [data-reveal].is-revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .js-reveal [data-reveal] { opacity: 1; transform: none; transition: none; }
-}
+/* ---------- reveal animation (DISABLED — content always visible) ---------- */
+/* Kept the data-reveal hooks in markup for future use, but no longer hides
+   content. Was causing flickers/invisibility during programmatic scroll. */
+[data-reveal] { opacity: 1; transform: none; }
 
 /* ==========================================================================
    HERO V2 — asymmetric grid, food-forward, glassmorphic chip
@@ -2733,39 +2729,44 @@ body.night .section-title--dark { color: #fef0c5; }
   line-height: 1;
   letter-spacing: -0.028em;
   text-wrap: balance;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .hero-headline-eyebrow {
   display: block;
   font-family: 'Fredoka', sans-serif;
-  font-size: clamp(0.78rem, 1.05vw, 0.92rem);
-  font-weight: 600;
-  letter-spacing: 0.34em;
+  font-size: clamp(0.82rem, 1.05vw, 0.96rem);
+  font-weight: 700;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
   color: var(--coral-deep);
   margin-bottom: 18px;
-  text-shadow: 0 2px 8px rgba(255, 140, 66, 0.18);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
 }
 
 .hero-headline-main {
   display: block;
-  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-size: clamp(2.5rem, 6.1vw, 4.4rem);
   line-height: 1.02;
-  color: var(--ink);
+  font-weight: 800;
+  color: #091532;
   margin-bottom: 4px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
 }
 
 .hero-headline-script {
   display: block;
   font-family: 'Lobster', cursive;
   font-weight: 400;
-  font-size: clamp(2.4rem, 6.4vw, 4.4rem);
+  font-size: clamp(2.5rem, 6.6vw, 4.6rem);
   letter-spacing: 0.01em;
   line-height: 1;
-  color: var(--coral-deep);
+  color: #c84512;
   text-shadow:
-    0 2px 0 rgba(255, 255, 255, 0.5),
-    0 6px 18px rgba(255, 107, 53, 0.32);
+    0 1px 0 rgba(255, 255, 255, 0.5),
+    0 2px 0 rgba(122, 38, 8, 0.22);
 }
 
 body.dawn .hero-headline-main,
@@ -2775,14 +2776,17 @@ body.night .hero-headline-main    { color: #fef0c5; text-shadow: 0 2px 14px rgba
 body.night .hero-headline-script  { color: #ffb37a; text-shadow: 0 2px 14px rgba(0,0,0,0.65); }
 
 .hero-subhead {
-  font-size: clamp(1.04rem, 1.4vw, 1.2rem);
+  font-size: clamp(1.05rem, 1.4vw, 1.18rem);
   line-height: 1.55;
-  color: var(--ink-soft);
+  color: #1c2a45;
   max-width: 480px;
   margin: 0 0 30px;
-  opacity: 0.92;
+  opacity: 1;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
 }
-body.night .hero-subhead { color: #d8dff2; opacity: 0.92; }
+body.night .hero-subhead { color: #e9eef9; opacity: 1; text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
 
 .hero-cta-row {
   display: flex;
@@ -2794,18 +2798,19 @@ body.night .hero-subhead { color: #d8dff2; opacity: 0.92; }
 
 /* ghost button on light bg — outline pill that elevates on hover */
 .btn-ghost-light {
-  background: rgba(255, 255, 255, 0.7);
-  color: var(--ink);
-  border-color: rgba(20, 33, 61, 0.18);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 14px rgba(15, 37, 72, 0.08);
+  background: rgba(255, 255, 255, 0.92);
+  color: #14213d;
+  border-color: rgba(20, 33, 61, 0.35);
+  font-weight: 700;
+  box-shadow: 0 6px 16px rgba(15, 37, 72, 0.12),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.4);
 }
 .btn-ghost-light:hover {
   background: var(--white);
   color: var(--coral-deep);
+  border-color: var(--coral-deep);
   transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(15, 37, 72, 0.18);
+  box-shadow: 0 12px 28px rgba(15, 37, 72, 0.2);
 }
 
 .hero-meta-strip {
@@ -2854,16 +2859,16 @@ body.night .hero-subhead { color: #d8dff2; opacity: 0.92; }
 
 .hero-visual-halo {
   position: absolute;
-  inset: -8%;
+  inset: 6%;
   border-radius: 50%;
-  background: radial-gradient(circle at 50% 45%,
-    rgba(255, 240, 200, 0.85) 0%,
-    rgba(255, 200, 120, 0.55) 28%,
-    rgba(255, 160, 90, 0.22) 52%,
-    rgba(255, 130, 70, 0) 75%);
-  filter: blur(8px);
+  background: radial-gradient(circle at 55% 50%,
+    rgba(255, 230, 185, 0.4) 0%,
+    rgba(255, 200, 130, 0.22) 35%,
+    rgba(255, 160, 100, 0.08) 62%,
+    rgba(255, 130, 80, 0) 80%);
+  filter: none;
   z-index: 0;
-  animation: heroHaloPulse 6s ease-in-out infinite;
+  animation: heroHaloPulse 8s ease-in-out infinite;
 }
 
 @keyframes heroHaloPulse {
@@ -3083,7 +3088,7 @@ body.night .hero-visual-halo {
     radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255, 235, 200, 0.7) 0%, transparent 70%),
     linear-gradient(180deg, var(--sand-warm) 0%, var(--cream) 100%);
   margin-top: 0;
-  padding: 24px 0 88px;
+  padding: 16px 0 64px;
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -3101,16 +3106,16 @@ body.night .hero-visual-halo {
 
 .featured-menu-v2 .section-inner {
   position: relative;
-  padding: 48px 32px 24px;
+  padding: 36px 32px 20px;
   max-width: 1180px;
 }
 
 .featured-grid--v2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 36px;
+  gap: 28px;
   max-width: 1080px;
-  margin: 0 auto 44px;
+  margin: 0 auto 32px;
   align-items: stretch;
 }
 
@@ -3123,8 +3128,8 @@ body.night .hero-visual-halo {
   display: flex;
   flex-direction: column;
   box-shadow:
-    0 22px 50px rgba(15, 37, 72, 0.13),
-    0 4px 12px rgba(15, 37, 72, 0.06);
+    0 14px 32px rgba(15, 37, 72, 0.08),
+    0 2px 6px rgba(15, 37, 72, 0.05);
   border: 1px solid rgba(255, 235, 200, 0.7);
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
               box-shadow 0.35s ease;
@@ -3132,10 +3137,10 @@ body.night .hero-visual-halo {
 }
 
 .featured-card--v2:hover {
-  transform: translateY(-10px);
+  transform: translateY(-6px);
   box-shadow:
-    0 36px 70px rgba(255, 140, 66, 0.25),
-    0 6px 18px rgba(15, 37, 72, 0.10);
+    0 24px 48px rgba(255, 140, 66, 0.16),
+    0 4px 12px rgba(15, 37, 72, 0.08);
 }
 
 .featured-card--hero {
@@ -3258,9 +3263,9 @@ body.night .hero-visual-halo {
 .featured-cta {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
-  margin-top: 8px;
+  margin-top: 0;
 }
 
 .btn-text-link {
@@ -3292,7 +3297,7 @@ body.night .hero-visual-halo {
 
 .story-section-v2 {
   position: relative;
-  padding: 60px 0 70px;
+  padding: 40px 0 52px;
   z-index: 1;
   background:
     linear-gradient(180deg, transparent 0%, rgba(255, 235, 200, 0.18) 60%, transparent 100%);
@@ -3300,13 +3305,13 @@ body.night .hero-visual-halo {
 
 .story-section-v2 .section-inner {
   max-width: 1180px;
-  padding: 40px 32px;
+  padding: 28px 32px;
 }
 
 .story-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  gap: 68px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 48px;
   align-items: center;
 }
 
@@ -3341,27 +3346,27 @@ body.night .hero-visual-halo {
   border-radius: 22px;
   overflow: hidden;
   box-shadow:
-    0 28px 70px rgba(15, 37, 72, 0.32),
-    0 6px 18px rgba(15, 37, 72, 0.18);
+    0 18px 42px rgba(15, 37, 72, 0.18),
+    0 4px 12px rgba(15, 37, 72, 0.10);
   background: var(--white);
 }
 
 .story-visual-main {
-  top: 4%;
-  left: 8%;
-  width: 78%;
-  height: 70%;
-  transform: rotate(-2deg);
+  top: 2%;
+  left: 6%;
+  width: 80%;
+  height: 72%;
+  transform: rotate(-2.5deg);
   z-index: 1;
   border: 8px solid var(--cream);
 }
 
 .story-visual-overlay {
-  bottom: 4%;
-  right: 4%;
-  width: 50%;
-  height: 44%;
-  transform: rotate(5deg);
+  bottom: 2%;
+  right: 0%;
+  width: 56%;
+  height: 50%;
+  transform: rotate(4deg);
   border: 8px solid var(--cream);
   z-index: 2;
 }
@@ -3374,50 +3379,7 @@ body.night .hero-visual-halo {
   display: block;
 }
 
-.story-visual-badge {
-  position: absolute;
-  top: 0;
-  right: 4%;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 104px;
-  height: 104px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--coral), var(--coral-deep));
-  color: var(--white);
-  text-align: center;
-  box-shadow:
-    0 16px 36px rgba(255, 107, 53, 0.5),
-    inset 0 -3px 0 rgba(0, 0, 0, 0.15),
-    0 0 0 6px var(--cream);
-  transform: rotate(-10deg);
-  animation: storyBadgeFloat 6s ease-in-out infinite;
-}
-
-@keyframes storyBadgeFloat {
-  0%, 100% { transform: rotate(-8deg) translateY(0);    }
-  50%      { transform: rotate(-6deg) translateY(-4px); }
-}
-
-.story-visual-badge-num {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 1.7rem;
-  line-height: 1;
-  letter-spacing: -0.01em;
-}
-.story-visual-badge-text {
-  font-family: 'Fredoka', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-top: 4px;
-  opacity: 0.95;
-}
+/* .story-visual-badge removed — authenticity > faux badge */
 
 .story-copy {
   max-width: 540px;
@@ -3429,18 +3391,18 @@ body.night .hero-visual-halo {
 
 .story-lede {
   font-size: clamp(1.08rem, 1.4vw, 1.22rem);
-  line-height: 1.55;
+  line-height: 1.5;
   color: var(--ink);
-  margin: 12px 0 16px;
+  margin: 10px 0 14px;
   font-weight: 600;
   text-wrap: balance;
 }
 
 .story-body {
-  font-size: 1.04rem;
-  line-height: 1.7;
+  font-size: 1.02rem;
+  line-height: 1.65;
   color: var(--ink-soft);
-  margin: 0 0 26px;
+  margin: 0 0 22px;
 }
 
 body.dawn .story-lede,
@@ -3541,11 +3503,8 @@ body.night .story-body { color: #cbd5e8; }
 }
 
 @media (max-width: 540px) {
-  .story-section-v2 { padding: 40px 0; }
+  .story-section-v2 { padding: 32px 0; }
   .story-visual { max-width: 360px; }
-  .story-visual-badge { width: 72px; height: 72px; }
-  .story-visual-badge-num { font-size: 1.3rem; }
-  .story-visual-badge-text { font-size: 0.56rem; }
   .story-contact { grid-template-columns: 1fr; }
   .story-tagline-v2 span { font-size: 1.15rem; }
   .story-lede { font-size: 1.05rem; }
@@ -3556,7 +3515,7 @@ body.night .story-body { color: #cbd5e8; }
    ========================================================================== */
 
 .cta-banner-v2 {
-  padding: 16px 24px 64px;
+  padding: 8px 24px 52px;
   max-width: 1240px;
   margin: 0 auto;
 }
@@ -3565,36 +3524,36 @@ body.night .story-body { color: #cbd5e8; }
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(ellipse 70% 100% at 25% 30%, rgba(255, 200, 130, 0.6) 0%, transparent 60%),
-    radial-gradient(ellipse 90% 100% at 75% 70%, rgba(255, 90, 110, 0.4) 0%, transparent 65%),
-    linear-gradient(135deg, var(--coral) 0%, var(--coral-deep) 50%, #cc3d70 100%);
+    radial-gradient(ellipse 50% 80% at 22% 28%, rgba(255, 205, 140, 0.35) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 78% 72%, rgba(220, 70, 100, 0.28) 0%, transparent 65%),
+    linear-gradient(135deg, var(--coral) 0%, var(--coral-deep) 55%, #c63a68 100%);
   border-radius: 36px;
-  padding: 80px 60px;
+  padding: 72px 60px;
   text-align: center;
   color: var(--white);
   box-shadow:
-    0 30px 80px rgba(255, 107, 53, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    0 24px 60px rgba(214, 70, 30, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
 .cta-banner-glow {
   position: absolute;
   pointer-events: none;
   border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.55;
+  filter: blur(14px);
+  opacity: 0.35;
 }
 .cta-banner-glow--a {
-  top: -20%; left: -10%;
-  width: 380px; height: 380px;
-  background: radial-gradient(circle, #ffd97a 0%, transparent 70%);
-  animation: ctaGlowDrift 12s ease-in-out infinite;
+  top: -16%; left: -6%;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, #ffd680 0%, transparent 65%);
+  animation: ctaGlowDrift 14s ease-in-out infinite;
 }
 .cta-banner-glow--b {
-  bottom: -30%; right: -10%;
-  width: 460px; height: 460px;
-  background: radial-gradient(circle, #ff5a8a 0%, transparent 70%);
-  animation: ctaGlowDrift 14s ease-in-out infinite reverse;
+  bottom: -18%; right: -4%;
+  width: 260px; height: 260px;
+  background: radial-gradient(circle, #ff5577 0%, transparent 65%);
+  animation: ctaGlowDrift 16s ease-in-out infinite reverse;
   animation-delay: -3s;
 }
 @keyframes ctaGlowDrift {
@@ -3612,18 +3571,18 @@ body.night .story-body { color: #cbd5e8; }
   border-radius: 50%;
   object-fit: cover;
   box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.3),
-    inset 0 0 0 6px rgba(255, 255, 255, 0.35);
-  opacity: 0.92;
+    0 18px 40px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 5px rgba(255, 255, 255, 0.4);
+  opacity: 1;
   pointer-events: none;
 }
 .cta-banner-deco--left {
-  top: 50%; left: -60px;
-  transform: translateY(-50%) rotate(-12deg);
+  top: 50%; left: -54px;
+  transform: translateY(-50%) rotate(-10deg);
 }
 .cta-banner-deco--right {
-  top: 50%; right: -60px;
-  transform: translateY(-50%) rotate(14deg);
+  top: 50%; right: -54px;
+  transform: translateY(-50%) rotate(12deg);
 }
 
 .cta-banner-content {
@@ -3650,29 +3609,34 @@ body.night .story-body { color: #cbd5e8; }
 
 .cta-banner-title--big {
   font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
+  font-weight: 800;
   font-size: clamp(2.2rem, 6vw, 4rem);
   color: var(--white);
   line-height: 1.05;
   letter-spacing: -0.025em;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 1px rgba(122, 38, 8, 0.35);
   margin-bottom: 18px;
+  -webkit-font-smoothing: antialiased;
 }
 .cta-banner-title--big em {
   font-family: 'Lobster', cursive;
   font-style: normal;
   font-weight: 400;
-  color: #fff8e0;
+  color: #fff4d6;
   display: inline-block;
   transform: translateY(2px);
+  text-shadow: 0 2px 1px rgba(122, 38, 8, 0.4);
 }
 
 .cta-banner-v2 .cta-banner-sub {
   font-size: clamp(1.04rem, 1.4vw, 1.2rem);
-  color: rgba(255, 255, 255, 0.92);
+  color: #ffffff;
   line-height: 1.55;
   max-width: 580px;
   margin: 0 auto 32px;
+  font-weight: 500;
+  text-shadow: 0 1px 1px rgba(122, 38, 8, 0.25);
+  opacity: 0.96;
 }
 
 .cta-row--banner {
@@ -3685,26 +3649,32 @@ body.night .story-body { color: #cbd5e8; }
 /* white-on-coral primary in CTA banner */
 .btn-primary-on-coral {
   background: var(--white);
-  color: var(--coral-deep);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.2);
+  color: #c33a14;
+  font-weight: 700;
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.25),
+    inset 0 -2px 0 rgba(195, 58, 20, 0.1);
 }
 .btn-primary-on-coral:hover {
   background: #fff8e0;
-  color: #d65a1a;
+  color: #a82e0d;
   transform: translateY(-2px);
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+  box-shadow:
+    0 16px 32px rgba(0, 0, 0, 0.32),
+    inset 0 -2px 0 rgba(195, 58, 20, 0.15);
 }
 
 .cta-banner-v2 .btn-ghost-light {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.08);
   color: var(--white);
-  border-color: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(4px);
-  box-shadow: none;
+  border-color: rgba(255, 255, 255, 0.7);
+  border-width: 2px;
+  font-weight: 700;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
 }
 .cta-banner-v2 .btn-ghost-light:hover {
   background: var(--white);
-  color: var(--coral-deep);
+  color: #c33a14;
   border-color: var(--white);
 }
 
@@ -3728,22 +3698,27 @@ body.night .story-body { color: #cbd5e8; }
 
 .hours-section-v2 {
   position: relative;
-  padding: 36px 0 0;
+  padding: 80px 0 0;
   background:
-    radial-gradient(ellipse 80% 100% at 50% 0%, rgba(255, 140, 66, 0.18) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(15, 37, 72, 0.92) 0%, rgba(10, 21, 48, 0.96) 100%);
+    radial-gradient(ellipse 100% 60% at 50% 0%, rgba(214, 84, 32, 0.16) 0%, transparent 60%),
+    linear-gradient(180deg,
+      #382148 0%,
+      #251c44 10%,
+      #14264f 28%,
+      #0e1c3a 60%,
+      #050d1e 100%);
   color: var(--white);
 }
 
 .hours-section-glow {
   position: absolute;
-  top: -20%;
+  top: -10%;
   left: 50%;
   transform: translateX(-50%);
-  width: 70%;
-  height: 50%;
-  background: radial-gradient(ellipse, rgba(255, 200, 130, 0.18) 0%, transparent 70%);
-  filter: blur(40px);
+  width: 60%;
+  height: 35%;
+  background: radial-gradient(ellipse, rgba(255, 200, 130, 0.08) 0%, transparent 70%);
+  filter: blur(18px);
   pointer-events: none;
 }
 
@@ -3945,7 +3920,7 @@ body { background-attachment: fixed; }
   background:
     radial-gradient(ellipse 90% 50% at 50% 0%, rgba(255, 220, 170, 0.55) 0%, transparent 70%),
     linear-gradient(180deg, var(--cream) 0%, #fff7e8 50%, var(--sand-warm) 100%);
-  padding: 0 0 56px;
+  padding: 0 0 32px;
 }
 
 .gallery-section-v2::before {
@@ -3960,35 +3935,77 @@ body { background-attachment: fixed; }
 
 .gallery-section-v2 .section-inner {
   position: relative;
-  padding: 28px 32px 16px;
+  padding: 20px 32px 12px;
   max-width: 1180px;
 }
 
+/* Editorial mosaic grid — deliberate placement instead of CSS column masonry.
+   Two of the photos span vertically; the rest fill the remaining cells. */
 .gallery-section-v2 .gallery {
-  column-count: 3;
-  column-gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 110px;
+  gap: 14px;
   max-width: 1080px;
   margin: 0 auto;
+  column-count: initial;
 }
 
 .gallery-section-v2 .gallery-item {
-  border-radius: 18px;
+  display: block;
+  border-radius: 16px;
   box-shadow:
-    0 18px 40px rgba(15, 37, 72, 0.18),
-    0 4px 12px rgba(15, 37, 72, 0.08);
-  border: 6px solid var(--white);
+    0 10px 24px rgba(15, 37, 72, 0.10),
+    0 2px 6px rgba(15, 37, 72, 0.06);
+  border: 5px solid var(--white);
   background: var(--white);
+  margin: 0;
+  overflow: hidden;
+  position: relative;
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
               box-shadow 0.35s ease;
-  margin-bottom: 20px;
 }
 
 .gallery-section-v2 .gallery-item:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px) rotate(-0.4deg);
   box-shadow:
-    0 28px 60px rgba(255, 140, 66, 0.25),
-    0 6px 16px rgba(15, 37, 72, 0.12);
+    0 24px 50px rgba(255, 140, 66, 0.25),
+    0 6px 14px rgba(15, 37, 72, 0.12);
 }
+
+.gallery-section-v2 .gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Editorial layout — cells now match each photo's natural orientation
+   so faces and subjects aren't cropped to fit rigid geometry. */
+/* 1: poke-bowl (portrait/squarish food) — taller cell */
+.gallery-section-v2 .gallery-item:nth-child(1) { grid-column: span 5; grid-row: span 4; }
+/* 2: team (landscape group shot) — wide cell, top row */
+.gallery-section-v2 .gallery-item:nth-child(2) { grid-column: span 4; grid-row: span 2; }
+/* 3: customer-sushi-boat (landscape) — wide cell, top row */
+.gallery-section-v2 .gallery-item:nth-child(3) { grid-column: span 3; grid-row: span 2; }
+/* 4: staff-poke (portrait, person holding bowl) — TALL cell so head + bowl both fit */
+.gallery-section-v2 .gallery-item:nth-child(4) { grid-column: span 4; grid-row: span 4; }
+/* 5: sushi-platter (landscape food) — wide cell */
+.gallery-section-v2 .gallery-item:nth-child(5) { grid-column: span 3; grid-row: span 4; transform: rotate(-0.3deg); }
+/* 6: interior-merch (landscape with people) — wide cell, bottom */
+.gallery-section-v2 .gallery-item:nth-child(6) { grid-column: span 5; grid-row: span 2; transform: rotate(0.4deg); }
+
+/* Object-position: bias toward the upper portion of human photos so heads
+   and faces stay in frame. Food shots stay center-center. */
+.gallery-section-v2 .gallery-item:nth-child(1) img { object-position: center 40%; }
+.gallery-section-v2 .gallery-item:nth-child(2) img { object-position: center 32%; }
+.gallery-section-v2 .gallery-item:nth-child(3) img { object-position: center 28%; }
+.gallery-section-v2 .gallery-item:nth-child(4) img { object-position: center 22%; }
+.gallery-section-v2 .gallery-item:nth-child(5) img { object-position: center 50%; }
+.gallery-section-v2 .gallery-item:nth-child(6) img { object-position: center 38%; }
+
+.gallery-section-v2 .gallery-item:nth-child(5):hover,
+.gallery-section-v2 .gallery-item:nth-child(6):hover { transform: translateY(-4px); }
 
 .gallery-section-v2 .gallery-item.feature::after {
   background: linear-gradient(135deg, var(--coral), var(--coral-deep));
@@ -3998,12 +4015,26 @@ body { background-attachment: fixed; }
 }
 
 @media (max-width: 880px) {
-  .gallery-section-v2 .gallery { column-count: 2; column-gap: 14px; }
+  .gallery-section-v2 .gallery {
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 90px;
+    gap: 12px;
+  }
+  .gallery-section-v2 .gallery-item:nth-child(1) { grid-column: span 6; grid-row: span 3; }
+  .gallery-section-v2 .gallery-item:nth-child(2) { grid-column: span 3; grid-row: span 2; }
+  .gallery-section-v2 .gallery-item:nth-child(3) { grid-column: span 3; grid-row: span 2; }
+  .gallery-section-v2 .gallery-item:nth-child(4) { grid-column: span 3; grid-row: span 2; }
+  .gallery-section-v2 .gallery-item:nth-child(5) { grid-column: span 3; grid-row: span 2; }
+  .gallery-section-v2 .gallery-item:nth-child(6) { grid-column: span 6; grid-row: span 2; }
   .gallery-section-v2 .section-inner { padding: 16px 22px 8px; }
-  .gallery-section-v2 .gallery-item { border-width: 4px; margin-bottom: 14px; }
+  .gallery-section-v2 .gallery-item { border-width: 4px; }
 }
 @media (max-width: 540px) {
-  .gallery-section-v2 .gallery { column-count: 1; }
+  .gallery-section-v2 .gallery {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 200px;
+  }
+  .gallery-section-v2 .gallery-item:nth-child(n) { grid-column: span 1; grid-row: span 1; transform: none; }
 }
 
 /* ==========================================================================
@@ -4015,4 +4046,868 @@ body { background-attachment: fixed; }
   background:
     linear-gradient(180deg, var(--sand-warm) 0%, #fff7e8 40%, #fff3d8 100%);
   margin-top: -2px;
+}
+
+/* ==========================================================================
+   ENVIRONMENTAL STORYTELLING LAYER
+   Refined coastal silhouettes, shoreline wave dividers, and a cinematic
+   Sanibel lighthouse moment in the hours section. Reintroduces the island
+   sense of place lost in the v2 redesign — but as atmosphere, not clip art.
+   ========================================================================== */
+
+/* shared frame for ensuring section can host the decorative SVGs cleanly */
+.featured-menu-v2,
+.gallery-section-v2,
+.story-section-v2,
+.cta-banner-v2,
+.hours-section-v2 {
+  isolation: isolate;
+}
+
+/* ----- lock text colors inside cream-zone sections regardless of body
+   day/night class. These sections have their OWN cream backgrounds, so
+   the body.night rule that turns headlines cream would make them
+   invisible on a cream bg. ----- */
+body.dawn .featured-menu-v2 .section-title--dark,
+body.dawn .gallery-section-v2 .section-title--dark,
+body.dawn .story-section-v2 .section-title--dark,
+body.dusk .featured-menu-v2 .section-title--dark,
+body.dusk .gallery-section-v2 .section-title--dark,
+body.dusk .story-section-v2 .section-title--dark,
+body.night .featured-menu-v2 .section-title--dark,
+body.night .gallery-section-v2 .section-title--dark,
+body.night .story-section-v2 .section-title--dark {
+  color: var(--ink);
+  text-shadow: none;
+}
+
+body.night .featured-menu-v2 .section-lede,
+body.night .gallery-section-v2 .section-lede,
+body.night .story-section-v2 .section-lede,
+body.dusk  .featured-menu-v2 .section-lede,
+body.dusk  .gallery-section-v2 .section-lede,
+body.dusk  .story-section-v2 .section-lede,
+body.dawn  .featured-menu-v2 .section-lede,
+body.dawn  .gallery-section-v2 .section-lede,
+body.dawn  .story-section-v2 .section-lede,
+body.night .story-section-v2 .story-lede,
+body.night .story-section-v2 .story-body,
+body.dusk  .story-section-v2 .story-lede,
+body.dusk  .story-section-v2 .story-body,
+body.dawn  .story-section-v2 .story-lede,
+body.dawn  .story-section-v2 .story-body {
+  color: var(--ink-soft);
+}
+
+body.night .story-section-v2 .story-lede,
+body.dusk  .story-section-v2 .story-lede,
+body.dawn  .story-section-v2 .story-lede {
+  color: var(--ink);
+}
+
+/* featured card body copy on cream sections */
+body.night .featured-card--v2 p,
+body.dusk  .featured-card--v2 p,
+body.dawn  .featured-card--v2 p {
+  color: var(--ink-soft);
+}
+body.night .featured-card--v2 h3,
+body.dusk  .featured-card--v2 h3,
+body.dawn  .featured-card--v2 h3 {
+  color: var(--ink);
+}
+body.night .featured-card--v2,
+body.dusk  .featured-card--v2,
+body.dawn  .featured-card--v2 {
+  color: var(--ink);
+}
+
+/* contact tile values on cream sections stay dark */
+body.night .story-contact-tile .story-contact-value,
+body.dusk  .story-contact-tile .story-contact-value,
+body.dawn  .story-contact-tile .story-contact-value {
+  color: var(--ink);
+}
+
+/* ----- inter-section wave / shoreline dividers ----- */
+
+.env-divider {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 60px;
+  line-height: 0;
+  margin: -1px 0 -1px;   /* sit flush against adjacent sections */
+  pointer-events: none;
+}
+.env-divider svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.env-divider--cream { height: 56px; margin-top: -36px; }
+.env-divider--shore { height: 70px; margin-top: -40px; }
+.env-divider--gold  { height: 70px; margin-top: -34px; }
+.env-divider--into-navy {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 96px;
+  margin: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.env-divider--into-navy svg { height: 96px; }
+@media (max-width: 720px) { .env-divider--into-navy, .env-divider--into-navy svg { height: 64px; } }
+
+/* ----- decorative coastal silhouettes (cream zone) ----- */
+
+.env-frond {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.env-frond--featured {
+  bottom: 0;
+  right: 0;
+  width: 320px;
+  height: auto;
+  max-width: 30%;
+  opacity: 0.92;
+}
+
+.env-frond--featured-l {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  height: auto;
+  max-width: 28%;
+  opacity: 0.92;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.env-island {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.env-island--gallery {
+  bottom: 0;
+  left: 0;
+  width: 380px;
+  max-width: 32%;
+  height: auto;
+}
+
+.env-island--gallery-r {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 380px;
+  max-width: 32%;
+  height: auto;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.env-tropics {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.env-tropics--story {
+  bottom: 0;
+  right: 0;
+  width: 460px;
+  max-width: 38%;
+  height: auto;
+}
+
+/* ----- cinematic lighthouse + horizon for the hours section ----- */
+
+.env-horizon {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.env-horizon--hours {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 540px;
+  opacity: 1;
+}
+.hours-section-v2 { padding-bottom: 60px; }
+.hours-section-v2 .section-inner { padding-bottom: 220px; }
+@media (max-width: 720px) { .env-horizon--hours { height: 360px; } .hours-section-v2 .section-inner { padding-bottom: 160px; } }
+
+/* warm beacon pulse — slow, calm, cinematic */
+.env-lighthouse-beacon {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: envBeaconPulse 5.5s ease-in-out infinite;
+}
+@keyframes envBeaconPulse {
+  0%, 100% { opacity: 0.55; transform: scale(0.85); }
+  50%      { opacity: 1;    transform: scale(1.15); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .env-lighthouse-beacon { animation: none; }
+}
+
+/* keep hero ocean-bg accessible alongside these but make sure they layer cleanly */
+.env-horizon--hours,
+.env-tropics--story,
+.env-island--gallery,
+.env-frond--featured {
+  filter: drop-shadow(0 4px 18px rgba(0,0,0,0.05));
+}
+
+/* the env-horizon and the section-inner content must coexist —
+   section-inner gets a higher stack to remain interactive */
+.hours-section-v2 .section-inner { position: relative; z-index: 2; }
+.story-section-v2 .section-inner { position: relative; z-index: 2; }
+.gallery-section-v2 .section-inner { position: relative; z-index: 2; }
+.featured-menu-v2 .section-inner { position: relative; z-index: 2; }
+
+/* mobile: gentler, smaller silhouettes so they don't dominate */
+@media (max-width: 720px) {
+  .env-frond--featured   { width: 220px; opacity: 0.7; }
+  .env-frond--featured-l { width: 200px; opacity: 0.6; }
+  .env-island--gallery   { width: 260px; opacity: 0.85; }
+  .env-island--gallery-r { width: 240px; opacity: 0.7; }
+  .env-tropics--story    { width: 280px; opacity: 0.8; }
+  .env-horizon--hours    { height: 65%; }
+  .env-divider, .env-divider--cream, .env-divider--shore, .env-divider--gold { height: 40px; margin-top: -22px; }
+  .env-divider--into-navy { height: 30px; }
+}
+
+/* ==========================================================================
+   COASTAL ZONE — calm restrained wrapper for the CTA banner + hours
+   section. No palms, no big sun, no fantasy sky. Just a soft warm-to-navy
+   bridge that lets the CTA banner sit on warm dusk and the hours section
+   rest on a quiet navy ocean. Subtle distant horizon at the very bottom.
+   ========================================================================== */
+
+.coastal-zone {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(180deg,
+    #fff3d8 0%,        /* meet the cream story bg flush at top */
+    #f5d4a8 3%,
+    #e8b08a 7%,        /* gentle warm tone behind the CTA banner */
+    #2a3258 26%,       /* dusk fade */
+    #14264f 48%,
+    #0e1c3a 72%,
+    #050d1e 100%);
+  margin-top: -1px;
+  z-index: 1;
+}
+
+/* stars are drawn inside the env-horizon SVG directly — see HTML. The CSS
+   pseudo-element approach was unreliable across browsers. */
+.env-h-star { animation: envStarTwinkle 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+.env-h-star.s2 { animation-delay: -1.2s; }
+.env-h-star.s3 { animation-delay: -2.6s; }
+.env-h-star.s4 { animation-delay: -3.8s; }
+@keyframes envStarTwinkle {
+  0%, 100% { opacity: 0.45; }
+  50%      { opacity: 1;    }
+}
+@media (prefers-reduced-motion: reduce) {
+  .env-h-star { animation: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coastal-zone::before { animation: none; }
+}
+
+@media (max-width: 720px) {
+  .coastal-zone::before { top: 32%; bottom: 70px; opacity: 0.5; }
+}
+
+/* CTA banner sits on the warm dusk band, looks like a coral sign on a soft sky */
+.coastal-zone .cta-banner-v2 {
+  position: relative;
+  z-index: 2;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+.coastal-zone .cta-banner-inner--v2 {
+  box-shadow:
+    0 22px 50px rgba(20, 12, 40, 0.35),
+    0 6px 16px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+/* hours section sits on the quiet navy ocean half */
+.coastal-zone .hours-section-v2 {
+  background: transparent;
+  padding-top: 20px;
+  padding-bottom: 680px;   /* tall room for the continuous horizon scene */
+  margin-top: 0;
+  position: static;        /* let env-horizon anchor to the coastal-zone */
+}
+.coastal-zone .hours-section-v2 .section-inner { padding-bottom: 30px; }
+@media (max-width: 720px) {
+  .coastal-zone .hours-section-v2 { padding-bottom: 440px; }
+}
+
+/* drop the old hard divider + spotlight glow — both made the scene feel artificial */
+.coastal-zone .env-divider--into-navy { display: none; }
+.coastal-zone .hours-section-glow      { display: none; }
+
+/* hours card & map: softer translucency so the ocean shows behind without
+   making them feel like floating UI on alien terrain */
+.coastal-zone .hours-card {
+  background: rgba(10, 22, 46, 0.78);
+  border-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    0 18px 36px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.coastal-zone .map-card--v2 {
+  background: rgba(10, 22, 46, 0.65);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 18px 36px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* The horizon SVG is a TALL background layer that bleeds past both the top
+   AND the bottom of its container. Top is masked into transparent so the
+   stars/atmosphere fade naturally into the navy sky above. Bottom bleeds
+   into the footer. Net result: no visible scene boundary. */
+.coastal-zone .env-horizon--hours {
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 820px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 1;
+  /* fade the top 18% of the SVG so its stars+atmosphere emerge from the
+     navy sky without a visible boundary line */
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.5) 8%, #000 18%, #000 100%);
+          mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.5) 8%, #000 18%, #000 100%);
+}
+@media (max-width: 720px) {
+  .coastal-zone .env-horizon--hours { height: 540px; bottom: -40px; }
+}
+
+/* coastal-zone overflows hidden by default elsewhere; allow our horizon
+   art to bleed down through the section→footer boundary */
+.coastal-zone { overflow: visible; }
+
+/* match the footer to the coastal-zone's bottom tone so the SVG's deepest
+   wave color flows into the footer with no visible seam */
+.site-footer {
+  background: #050d1e;
+  color: rgba(255, 255, 255, 0.78);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+.site-footer a {
+  color: rgba(255, 200, 130, 0.92);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(255, 200, 130, 0.4);
+  transition: color 0.2s, border-color 0.2s;
+}
+.site-footer a:hover {
+  color: #ffd690;
+  border-bottom-color: rgba(255, 200, 130, 0.7);
+}
+
+/* utility — keep wrapped tokens together (phone numbers, brand names) */
+.nowrap { white-space: nowrap; }
+
+/* ==========================================================================
+   "Online ordering coming soon" — subtle reassurance, not a banner
+   ========================================================================== */
+
+.featured-cta-note {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  opacity: 0.7;
+  margin: 6px 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.featured-cta-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--coral);
+  box-shadow: 0 0 0 0 rgba(255, 140, 66, 0.55);
+  animation: ctaNotePulse 2.2s ease-out infinite;
+}
+@keyframes ctaNotePulse {
+  0%   { box-shadow: 0 0 0 0 rgba(255, 140, 66, 0.55); }
+  70%  { box-shadow: 0 0 0 8px rgba(255, 140, 66, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 140, 66, 0); }
+}
+
+.cta-banner-soft {
+  display: inline-block;
+  margin-left: 4px;
+  opacity: 0.75;
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   MOBILE — disable ambient moving objects/animals.
+   Keep subtle pulses (beacon, hero halo, logo float) — kill anything that
+   travels across the screen on a phone, where it's noisy and battery-eating.
+   ========================================================================== */
+@media (max-width: 760px) {
+  /* hero ocean wildlife & moving objects */
+  .bird-1, .bird-2, .bird-3, .bird-4,
+  .shooting-star,
+  .cruise, .cruise-pre,
+  .sailboat,
+  .pelican,
+  .seaturtle,
+  .crab,
+  .parasail,
+  .bottle,
+  .jetski,
+  .plane,
+  .balloon,
+  .dolphin, .dolphin-1, .dolphin-2,
+  .fish, .fish-1, .fish-2, .fish-3 {
+    display: none !important;
+  }
+
+  /* nav ambient critters (chameleon, caterpillar, monkey, toucan, butterfly, parrot) */
+  .chameleon,
+  .caterpillar,
+  .hanging-monkey,
+  .nav-deco.toucan,
+  .nav-deco.parrot,
+  .nav-deco.butterfly,
+  .nav-deco.monkey {
+    display: none !important;
+  }
+
+  /* keep waves but freeze their motion */
+  .wave-1, .wave-2, .wave-3 { animation: none !important; }
+
+  /* keep palm trees but disable any animation on them */
+  .island g.palm { pointer-events: none; }
+  .coconut { animation: none !important; transition: none !important; }
+  .island g.shell { pointer-events: none; }
+
+  /* keep beacon pulse, hero halo, logo float, sun pulse — they're subtle and
+     do not move across the screen */
+}
+
+/* keep content above the small horizon hint */
+.coastal-zone .hours-section-v2 .section-inner { position: relative; z-index: 2; }
+.coastal-zone .hours-section-v2 .section-head { position: relative; z-index: 2; }
+.coastal-zone .hours-section-v2 .hours-visit { position: relative; z-index: 2; }
+
+/* lock the coastal-zone palette regardless of body time-of-day so the
+   colors stay calm and deliberate */
+body.night .coastal-zone,
+body.dusk  .coastal-zone,
+body.dawn  .coastal-zone {
+  background: linear-gradient(180deg,
+    #fff3d8 0%,
+    #f5d4a8 3%,
+    #e8b08a 7%,
+    #2a3258 26%,
+    #14264f 48%,
+    #0e1c3a 72%,
+    #050d1e 100%);
+}
+
+/* ==========================================================================
+   MENU PAGE V2 — luxury sushi-at-night
+   Restrained. Dark, moody coastal backdrop with phase-aware tinting at the
+   page edges only. The MENU is the page; atmosphere is the frame.
+   ========================================================================== */
+
+/* ----- moody coastal base, regardless of homepage's bright sky -----
+   We override body.* phase gradients on the menu page so the menu never
+   becomes a bright tropical scene. Phase only shifts the warm/cool accent. */
+body.menu-page {
+  color: #f2e9d4;
+  background: linear-gradient(180deg,
+    #0c1a36 0%,
+    #112347 35%,
+    #142b56 70%,
+    #18305e 100%);
+}
+body.menu-page.dawn {
+  background: linear-gradient(180deg,
+    #2a1330 0%,
+    #1a1a3e 28%,
+    #142b56 70%,
+    #18305e 100%);
+}
+body.menu-page.dusk {
+  background: linear-gradient(180deg,
+    #3a1532 0%,
+    #1f1a4a 28%,
+    #142b56 70%,
+    #18305e 100%);
+}
+body.menu-page.night {
+  background: linear-gradient(180deg,
+    #050d22 0%,
+    #08142e 35%,
+    #0c1a3e 70%,
+    #122148 100%);
+}
+
+/* ----- atmosphere: edge-only accents, never a fullscreen scene -----
+   One fixed layer with TWO subtle effects:
+   (1) a soft warm/cool glow tucked just under the top nav (phase accent)
+   (2) a subtle vignette to deepen the page edges (moody, premium)
+   Everything else lives in the coastal-zone footer (edge transition). */
+.menu-atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.menu-atmosphere::before {
+  /* phase accent — a wide soft band just below the top of the viewport */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 320px;
+  background: radial-gradient(ellipse 70% 100% at 50% 0%,
+    rgba(120, 180, 220, 0.18), transparent 70%);
+  transition: background 2s ease;
+}
+body.menu-page.dawn .menu-atmosphere::before {
+  background: radial-gradient(ellipse 70% 100% at 50% 0%,
+    rgba(255, 170, 140, 0.22), transparent 70%);
+}
+body.menu-page.dusk .menu-atmosphere::before {
+  background: radial-gradient(ellipse 70% 100% at 50% 0%,
+    rgba(255, 130, 110, 0.28), transparent 70%);
+}
+body.menu-page.night .menu-atmosphere::before {
+  background: radial-gradient(ellipse 70% 100% at 50% 0%,
+    rgba(180, 200, 240, 0.10), transparent 70%);
+}
+.menu-atmosphere::after {
+  /* moody vignette anchoring the side edges */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 100% at 0% 50%, rgba(0, 0, 0, 0.22), transparent 70%),
+    radial-gradient(ellipse 60% 100% at 100% 50%, rgba(0, 0, 0, 0.22), transparent 70%);
+  pointer-events: none;
+}
+
+/* hide every fullscreen scene element if it ever ships in markup */
+.m-sun, .m-horizon, .m-island, .m-frond, .m-lighthouse, .m-stars { display: none !important; }
+
+/* ----- menu hero typography: always cream-on-dark (page is always moody) ----- */
+body.menu-page .menu-hero h1 { color: #fef0c5; text-shadow: 0 2px 22px rgba(0, 0, 0, 0.4); }
+body.menu-page .menu-hero .lede { color: rgba(255, 245, 220, 0.82); }
+body.menu-page .menu-hero .lede a { color: #ffba7e; }
+body.menu-page .menu-hero .lede a:hover { color: var(--coral); }
+
+/* ----- new layout overrides ----- */
+body.menu-page main,
+body.menu-page .menu-hero,
+body.menu-page header.nav,
+body.menu-page footer.site-footer,
+body.menu-page .coastal-zone--menu { position: relative; z-index: 1; }
+
+/* wider container so the menu doesn't feel like it's floating in a void */
+.menu-main {
+  max-width: 1080px;
+  padding: 28px 28px 96px;
+}
+.menu-hero {
+  max-width: 1080px;
+  padding: 72px 28px 28px;
+}
+
+/* hero kicker matches the homepage v2 kicker style */
+.menu-hero .kicker {
+  font-size: 0.9rem;
+  letter-spacing: 0.22em;
+  padding: 7px 18px;
+}
+.menu-hero h1 {
+  font-size: clamp(2rem, 5.2vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.018em;
+  margin: 16px 0 18px;
+}
+.menu-hero .lede {
+  font-size: clamp(1.02rem, 1.4vw, 1.16rem);
+  max-width: 640px;
+  margin: 0 auto 6px;
+  line-height: 1.55;
+}
+
+/* ----- sticky category nav ----- */
+.menu-jump-sticky {
+  position: sticky;
+  /* --nav-h is set live by JS so the bar always sits just under the nav */
+  top: var(--nav-h, 0px);
+  z-index: 30;
+  padding: 14px 16px;
+  margin: 8px 0 0;
+  transition: padding 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, backdrop-filter 0.25s ease;
+}
+.menu-jump-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 8px;
+  justify-content: center;
+  scrollbar-width: none;
+  padding: 4px;
+}
+.menu-jump-inner::-webkit-scrollbar { display: none; }
+
+.menu-jump-sticky a {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: rgba(255, 245, 220, 0.85);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 9px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s, transform 0.15s, border-color 0.2s, box-shadow 0.25s;
+  flex: 0 0 auto;
+}
+.menu-jump-sticky a:hover {
+  background: var(--coral);
+  color: var(--white);
+  border-color: var(--coral);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(255, 140, 66, 0.35);
+}
+.menu-jump-sticky a.active {
+  background: var(--coral);
+  color: var(--white);
+  border-color: var(--coral);
+  box-shadow: 0 6px 18px rgba(255, 140, 66, 0.4);
+}
+
+/* when scrolled into the sticky position, get a blurred panel backdrop */
+.menu-jump-sticky.is-pinned {
+  padding: 10px 14px;
+  background: rgba(15, 25, 50, 0.68);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.30), 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ----- premium menu cards — light-on-dark, no per-phase swap ----- */
+.menu-section {
+  background: #fffaf0;
+  border-radius: 28px;
+  padding: 44px 48px 36px;
+  margin-bottom: 28px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 24px 60px rgba(0, 0, 0, 0.32),
+    0 6px 18px rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  /* land just below sticky nav + sticky category bar */
+  scroll-margin-top: calc(var(--nav-h, 80px) + 80px);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* feature section keeps its warm glow, stronger lift */
+.menu-section.feature {
+  background: linear-gradient(135deg, #fffaf0, #fceedd 70%, #fce0b8);
+  border: 1px solid rgba(255, 140, 66, 0.35);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 28px 64px rgba(0, 0, 0, 0.36),
+    0 0 0 1px rgba(255, 140, 66, 0.20),
+    0 8px 22px rgba(255, 140, 66, 0.18);
+}
+
+/* small kicker eyebrow above each h2 */
+.menu-section-kicker {
+  display: inline-block;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--coral);
+  background: rgba(255, 140, 66, 0.10);
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+.menu-h2 {
+  font-size: clamp(1.6rem, 3vw, 2.05rem);
+  letter-spacing: -0.012em;
+  margin-bottom: 18px;
+}
+
+.menu-h2-price {
+  font-size: 1.02rem;
+  background: linear-gradient(135deg, var(--coral), var(--coral-deep));
+  color: var(--white);
+  padding: 5px 14px;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(255, 140, 66, 0.35);
+}
+
+.menu-list li {
+  padding: 14px 0;
+  gap: 14px;
+}
+
+.menu-list li.featured {
+  background: linear-gradient(135deg, rgba(255, 140, 66, 0.12), rgba(255, 200, 130, 0.08));
+  border-radius: 16px;
+  padding: 18px 22px;
+  margin: 4px 0 6px;
+  border: 1px solid rgba(255, 140, 66, 0.20);
+}
+
+.m-name { font-size: 1.06rem; }
+.m-price { font-size: 1.18rem; }
+
+.m-flag {
+  background: linear-gradient(135deg, var(--coral), var(--coral-deep));
+  box-shadow: 0 4px 10px rgba(255, 140, 66, 0.35);
+}
+
+.chip-list li {
+  background: rgba(255, 255, 255, 0.78);
+  font-weight: 600;
+  transition: background 0.2s, transform 0.15s, border-color 0.2s;
+}
+.chip-list li:hover {
+  background: var(--coral);
+  color: var(--white);
+  border-color: var(--coral);
+  transform: translateY(-1px);
+}
+
+/* ----- subtle inter-section divider — very thin warm glint on the dark bg ----- */
+.menu-section + .menu-section { position: relative; }
+.menu-section + .menu-section::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: 18%;
+  right: 18%;
+  height: 3px;
+  background: radial-gradient(ellipse at center, rgba(255, 186, 126, 0.22), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* ----- disclaimer ----- */
+.menu-disclaimer {
+  font-size: 0.82rem;
+  margin-top: 40px;
+  color: rgba(242, 233, 212, 0.55);
+}
+
+/* ----- coastal footer for the menu page — dark ocean fade only,
+   no warm sand bridge since the menu page is already dark coastal ----- */
+.coastal-zone--menu {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(180deg,
+    #18305e 0%,
+    #142b56 15%,
+    #0e1c3a 50%,
+    #08142a 80%,
+    #050d1e 100%);
+  margin-top: 0;
+  padding-top: 0;
+  z-index: 1;
+}
+/* override the global coastal-zone phase-lock so it doesn't reintroduce the
+   warm sand colors on the menu page */
+body.menu-page.night .coastal-zone--menu,
+body.menu-page.dusk  .coastal-zone--menu,
+body.menu-page.dawn  .coastal-zone--menu {
+  background: linear-gradient(180deg,
+    #18305e 0%,
+    #142b56 15%,
+    #0e1c3a 50%,
+    #08142a 80%,
+    #050d1e 100%);
+}
+.env-horizon--menu {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 520px;             /* expanded for breathing room */
+  pointer-events: none;
+  margin-bottom: -40px;      /* bleed into footer for seamless fade-off */
+  overflow: hidden;
+  /* dual-layer mask:
+     (1) fade the top into the dark body bg above (no hard horizon line)
+     (2) fade BOTH side edges into darkness so the shoreline reads as a
+         distant coast continuing past the frame, not a centered strip */
+  -webkit-mask-image:
+    linear-gradient(180deg, transparent 0%, #000 14%, #000 100%),
+    linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+  -webkit-mask-composite: source-in;
+          mask-image:
+    linear-gradient(180deg, transparent 0%, #000 14%, #000 100%),
+    linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+          mask-composite: intersect;
+}
+.env-horizon--menu svg { display: block; width: 100%; height: 100%; }
+@media (max-width: 720px) {
+  .env-horizon--menu { height: 340px; margin-bottom: -28px; }
+}
+.coastal-zone--menu { padding-bottom: 48px; }
+@media (max-width: 720px) { .coastal-zone--menu { padding-bottom: 32px; } }
+
+/* ----- responsive ----- */
+@media (max-width: 760px) {
+  .menu-main { padding: 22px 18px 64px; }
+  .menu-hero { padding: 40px 20px 18px; }
+  .menu-section { padding: 30px 22px 24px; border-radius: 22px; margin-bottom: 22px; }
+  .menu-section.feature { padding: 30px 22px 26px; }
+  .menu-jump-sticky { padding: 10px 8px; }
+  .menu-jump-sticky a { font-size: 0.85rem; padding: 8px 14px; }
+  .menu-jump-inner { justify-content: flex-start; }
+  .menu-atmosphere::before { height: 240px; }
 }

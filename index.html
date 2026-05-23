@@ -43,8 +43,7 @@
       "addressCountry": "US"
     },
     "openingHoursSpecification": [
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday","Monday","Tuesday","Wednesday","Thursday"], "opens": "11:00", "closes": "19:00" },
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "11:00", "closes": "20:00" }
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "11:00", "closes": "20:00" }
     ]
   }
   </script>
@@ -968,10 +967,10 @@
           <p class="eyebrow"><span class="dot"></span><span id="status-text">Now Open in Sanibel</span></p>
           <h1 class="hero-headline">
             <span class="hero-headline-eyebrow">Sushi · Poke · Hibachi</span>
-            <span class="hero-headline-main">A taste of the islands,</span>
-            <span class="hero-headline-script">right on Sanibel.</span>
+            <span class="hero-headline-main">Sushi &amp; Poke.</span>
+            <span class="hero-headline-script">Island vibes.</span>
           </h1>
-          <p class="hero-subhead">Sashimi-grade fish, tropical poke bowls, and sizzling hibachi &mdash; made fresh by hand at 2003 Periwinkle Way.</p>
+          <p class="hero-subhead">Sashimi-grade fish, tropical poke bowls, and sizzling hibachi &mdash; made fresh by hand at 2003 Periwinkle Way on Sanibel.</p>
           <div class="hero-cta-row">
             <a href="tel:+12395790783" class="btn btn-primary btn-lg">Call to Order</a>
             <a href="menu.html" class="btn btn-ghost-light">View the Menu &rarr;</a>
@@ -1025,11 +1024,29 @@
     </section>
 
     <section class="featured-menu featured-menu-v2" id="featured">
+      <!-- subtle palm-frond silhouette anchoring the bottom-right -->
+      <svg class="env-frond env-frond--featured" viewBox="0 0 320 220" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">
+        <g fill="#2f6b3e" opacity="0.08">
+          <path d="M310,210 Q230,140 130,150 Q210,170 270,200 Z"/>
+          <path d="M310,210 Q210,160 90,176 Q190,194 250,206 Z"/>
+          <path d="M310,210 Q240,90 240,30 Q260,110 280,180 Z"/>
+          <path d="M310,210 Q160,90 70,40 Q200,140 270,200 Z"/>
+        </g>
+      </svg>
+      <!-- mirror palm silhouette on the bottom-left for balance -->
+      <svg class="env-frond env-frond--featured-l" viewBox="0 0 320 220" preserveAspectRatio="xMinYMax meet" aria-hidden="true">
+        <g fill="#2f6b3e" opacity="0.07">
+          <path d="M10,210 Q90,140 190,150 Q110,170 50,200 Z"/>
+          <path d="M10,210 Q110,160 230,176 Q130,194 70,206 Z"/>
+          <path d="M10,210 Q80,90 80,30 Q60,110 40,180 Z"/>
+          <path d="M10,210 Q160,90 250,40 Q120,140 50,200 Z"/>
+        </g>
+      </svg>
       <div class="section-inner">
         <header class="section-head section-head--center">
           <p class="kicker kicker--dark">Crowd Favorites</p>
           <h2 class="section-title section-title--display section-title--dark">Made fresh, <em>by hand.</em></h2>
-          <p class="section-lede">Two of the things we're best at &mdash; pulled straight from the menu and served with island sauces, tropical produce, and sashimi-grade fish.</p>
+          <p class="section-lede">Tropical produce, fresh-caught fish, sizzling hibachi &mdash; the two things our regulars order first.</p>
         </header>
 
         <div class="featured-grid featured-grid--v2">
@@ -1067,16 +1084,65 @@
         <div class="featured-cta">
           <a href="menu.html" class="btn btn-primary btn-lg">View the Full Menu</a>
           <a href="tel:+12395790783" class="btn-text-link">or call (239) 579-0783</a>
+          <p class="featured-cta-note"><span class="featured-cta-dot" aria-hidden="true"></span>Online ordering coming soon</p>
         </div>
       </div>
     </section>
 
+    <!-- whisper-soft tide line between featured menu and gallery (both cream) -->
+    <div class="env-divider env-divider--cream" aria-hidden="true">
+      <svg viewBox="0 0 1440 50" preserveAspectRatio="none">
+        <path d="M0,28 C280,46 460,12 720,28 C980,44 1160,12 1440,28 L1440,50 L0,50 Z" fill="rgba(245,194,118,0.10)"/>
+        <path d="M0,36 C260,52 440,22 720,38 C1000,54 1160,24 1440,38 L1440,50 L0,50 Z" fill="rgba(255,140,66,0.06)"/>
+      </svg>
+    </div>
+
     <section class="gallery-section gallery-section-v2">
+      <!-- mirror palm-tree silhouette on the right side, opposite of the gallery's left island -->
+      <svg class="env-island env-island--gallery-r" viewBox="0 0 380 130" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">
+        <defs>
+          <linearGradient id="env-isl-grad-2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"  stop-color="#1d3a6b" stop-opacity="0.15"/>
+            <stop offset="100%" stop-color="#1d3a6b" stop-opacity="0.04"/>
+          </linearGradient>
+        </defs>
+        <path d="M380,115 Q300,90 220,100 Q140,108 0,96 L0,130 L380,130 Z" fill="url(#env-isl-grad-2)"/>
+        <g fill="#1d3a6b" opacity="0.15" transform="translate(260,100)">
+          <path d="M0,0 Q1,-22 -1,-48 Q-3,-62 0,-72" stroke="#1d3a6b" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          <path d="M0,-72 Q-14,-78 -24,-72 Q-14,-70 0,-72 Z"/>
+          <path d="M0,-72 Q14,-78 24,-72 Q14,-70 0,-72 Z"/>
+          <path d="M0,-72 Q-4,-90 4,-86 Q2,-78 0,-72 Z"/>
+        </g>
+        <!-- small distant lighthouse pinprick for fun continuity -->
+        <g transform="translate(190,98)" fill="#1d3a6b" opacity="0.18">
+          <rect x="-2" y="-8" width="4" height="8"/>
+          <line x1="0" y1="-8" x2="0" y2="-22" stroke="#1d3a6b" stroke-width="1.4"/>
+          <rect x="-2" y="-22" width="4" height="3"/>
+        </g>
+      </svg>
+      <!-- distant island silhouette in the upper-left, suggesting horizon across the photo wall -->
+      <svg class="env-island env-island--gallery" viewBox="0 0 380 110" preserveAspectRatio="xMinYMax meet" aria-hidden="true">
+        <defs>
+          <linearGradient id="env-isl-grad-1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"  stop-color="#1d3a6b" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#1d3a6b" stop-opacity="0.05"/>
+          </linearGradient>
+        </defs>
+        <!-- subtle low horizon island shape -->
+        <path d="M0,95 Q90,72 180,82 Q260,90 380,78 L380,110 L0,110 Z" fill="url(#env-isl-grad-1)"/>
+        <!-- a slender palm silhouette to mark place -->
+        <g fill="#1d3a6b" opacity="0.16" transform="translate(120,84)">
+          <path d="M0,0 Q-1.5,-22 1,-44 Q3,-58 0,-66" stroke="#1d3a6b" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          <path d="M0,-66 Q-12,-72 -22,-66 Q-12,-64 0,-66 Z"/>
+          <path d="M0,-66 Q12,-72 22,-66 Q12,-64 0,-66 Z"/>
+          <path d="M0,-66 Q-4,-82 4,-80 Q2,-72 0,-66 Z"/>
+        </g>
+      </svg>
       <div class="section-inner">
         <header class="section-head section-head--center">
           <p class="kicker kicker--dark">From the Floor</p>
           <h2 class="section-title section-title--display section-title--dark">A look <em>inside.</em></h2>
-          <p class="section-lede">The room, the people, the plates. Drop in, snap one, tag us.</p>
+          <p class="section-lede">The room, the people, the plates. Drop in, sit a while, tag us if you like what you see.</p>
         </header>
         <div class="gallery">
           <a href="photos/poke-bowl.jpg" class="gallery-item feature" target="_blank" rel="noopener">
@@ -1101,7 +1167,40 @@
       </div>
     </section>
 
+    <!-- shoreline drift gallery → story — gentler, more organic shape -->
+    <div class="env-divider env-divider--shore" aria-hidden="true">
+      <svg viewBox="0 0 1440 64" preserveAspectRatio="none">
+        <path d="M0,30 C180,52 360,12 560,32 C760,52 940,18 1140,36 C1280,48 1380,30 1440,38 L1440,64 L0,64 Z" fill="rgba(248,225,168,0.32)"/>
+        <path d="M0,42 C200,58 380,28 580,44 C800,60 1020,30 1240,46 C1340,54 1400,42 1440,46 L1440,64 L0,64 Z" fill="rgba(255,243,216,0.55)"/>
+      </svg>
+    </div>
+
     <section class="story-section story-section-v2" id="story">
+      <!-- distant tropical horizon: faint palms + low island silhouette in bottom-right -->
+      <svg class="env-tropics env-tropics--story" viewBox="0 0 460 220" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">
+        <defs>
+          <linearGradient id="env-trop-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"  stop-color="#1d3a6b" stop-opacity="0.16"/>
+            <stop offset="100%" stop-color="#1d3a6b" stop-opacity="0.04"/>
+          </linearGradient>
+        </defs>
+        <!-- low island ridge -->
+        <path d="M120,200 Q220,170 320,180 Q400,188 460,176 L460,220 L120,220 Z" fill="url(#env-trop-grad)"/>
+        <!-- 2 palm silhouettes -->
+        <g fill="#1d3a6b" opacity="0.18" transform="translate(310,184)">
+          <path d="M0,0 Q2,-30 -1,-58 Q1,-72 -2,-80" stroke="#1d3a6b" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <path d="M-2,-80 Q-16,-86 -28,-80 Q-16,-78 -2,-80 Z"/>
+          <path d="M-2,-80 Q16,-86 28,-80 Q14,-78 -2,-80 Z"/>
+          <path d="M-2,-80 Q-6,-100 4,-96 Q2,-86 -2,-80 Z"/>
+          <path d="M-2,-80 Q6,-94 14,-86 Q4,-82 -2,-80 Z"/>
+        </g>
+        <g fill="#1d3a6b" opacity="0.14" transform="translate(380,188)">
+          <path d="M0,0 Q-2,-22 0,-44 Q2,-58 -1,-64" stroke="#1d3a6b" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <path d="M-1,-64 Q-12,-70 -20,-64 Q-12,-62 -1,-64 Z"/>
+          <path d="M-1,-64 Q12,-70 20,-64 Q11,-62 -1,-64 Z"/>
+          <path d="M-1,-64 Q-4,-80 4,-78 Q2,-70 -1,-64 Z"/>
+        </g>
+      </svg>
       <div class="section-inner">
         <div class="story-grid">
           <div class="story-visual" data-reveal>
@@ -1111,17 +1210,13 @@
             <figure class="story-visual-overlay">
               <img src="photos/staff-poke.jpg" alt="A server holding a fresh poke bowl" loading="lazy" />
             </figure>
-            <div class="story-visual-badge">
-              <span class="story-visual-badge-num">2024</span>
-              <span class="story-visual-badge-text">est. on Sanibel</span>
-            </div>
           </div>
           <div class="story-copy" data-reveal data-reveal-delay="1">
             <p class="kicker kicker--dark">Our Story</p>
-            <h2 class="section-title section-title--display section-title--dark">A piece of the islands on Periwinkle Way.</h2>
-            <p class="story-lede">Island Panda was created to bring a fresh, fun, island-inspired dining experience to Sanibel &mdash; colorful poke bowls, sashimi-grade sushi, and sizzling hibachi with a tropical twist.</p>
-            <p class="story-body">Locals, vacationers, lunch breaks, beach days, easy family dinners &mdash; our kitchen is built for the way Sanibel actually eats. Stop in, call ahead, or grab hibachi after a day in the sun. We'll make it feel a little more like vacation.</p>
-            <p class="story-tagline-v2"><span>Fresh.</span><span>Tropical.</span><span>Made with aloha.</span></p>
+            <h2 class="section-title section-title--display section-title--dark">Sanibel sushi with a tropical accent.</h2>
+            <p class="story-lede">A coastal sushi-and-poke spot built around fresh fish, tropical produce, and the kind of laid-back Sanibel afternoon a meal should taste like.</p>
+            <p class="story-body">Locals, vacationers, lunch breaks, beach days, easy family dinners &mdash; our kitchen is built for the way Sanibel actually eats. Grab a roll, build a bowl, or pull up a stool for hibachi after a day in the sun.</p>
+            <p class="story-tagline-v2"><span>Fresh.</span><span>Coastal.</span><span>Tropical.</span></p>
 
             <div class="story-contact">
               <a href="tel:+12395790783" class="story-contact-tile">
@@ -1148,7 +1243,14 @@
       </div>
     </section>
 
-    <section class="cta-banner cta-banner-v2">
+    <!-- ==================================================================
+         COASTAL ZONE — calm navy wrapper for the CTA banner + hours
+         section. Subtle warm hint at the top from the coral CTA above,
+         no theatrical sky/palms/sun. The atmosphere sits at the very
+         bottom of the scene as a small distant horizon hint.
+         ================================================================== -->
+    <div class="coastal-zone">
+      <section class="cta-banner cta-banner-v2">
       <div class="cta-banner-inner cta-banner-inner--v2">
         <div class="cta-banner-glow cta-banner-glow--a" aria-hidden="true"></div>
         <div class="cta-banner-glow cta-banner-glow--b" aria-hidden="true"></div>
@@ -1157,7 +1259,7 @@
         <div class="cta-banner-content">
           <p class="cta-banner-kicker">Come Hungry</p>
           <h2 class="cta-banner-title cta-banner-title--big">Don't just look.<br/><em>Come taste it.</em></h2>
-          <p class="cta-banner-sub">Call ahead and we'll have it ready in 15 &mdash; or walk in and we'll make you feel right at home.</p>
+          <p class="cta-banner-sub">Call ahead and we'll have your sushi or poke ready in 15 &mdash; or walk in for hibachi, dine-in, and the Sanibel breeze. <span class="cta-banner-soft">Online ordering coming soon.</span></p>
           <div class="cta-row cta-row--banner">
             <a href="tel:+12395790783" class="btn btn-primary-on-coral btn-lg">Call to Order</a>
             <a href="https://maps.google.com/?q=2003+Periwinkle+Way+Sanibel+FL+33957" target="_blank" rel="noopener" class="btn btn-ghost-light btn-lg">Get Directions &rarr;</a>
@@ -1168,11 +1270,144 @@
 
     <section class="hours-section hours-section-v2" id="hours">
       <div class="hours-section-glow" aria-hidden="true"></div>
+
+      <!-- minimal distant horizon: small lighthouse + soft wave silhouettes,
+           with the bottom edge as solid #050d1e so the scene flows into the
+           footer seamlessly. Uses `meet` so the full scene (including the
+           lighthouse on the right) always stays visible at any viewport.
+           Taller viewBox (1440×500) gives the lighthouse and shoreline real
+           vertical breathing room. -->
+      <svg class="env-horizon env-horizon--hours" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+        <defs>
+          <linearGradient id="env-h-wave-1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"  stop-color="#0c1834" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#070f24" stop-opacity="0.9"/>
+          </linearGradient>
+          <linearGradient id="env-h-wave-2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"  stop-color="#070f24" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#050d1e" stop-opacity="1"/>
+          </linearGradient>
+          <radialGradient id="env-h-beacon" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0%"  stop-color="#ffe7a3" stop-opacity="0.9"/>
+            <stop offset="60%" stop-color="#ffba6a" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#ff8c42" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- subtle scattered stars across the night sky (upper portion of the SVG).
+             Sparser toward the horizon, denser higher up. -->
+        <g fill="#ffffff">
+          <circle class="env-h-star"   cx="40"   cy="44"  r="1.0" opacity="0.9"/>
+          <circle class="env-h-star s2" cx="90"   cy="96"  r="0.8" opacity="0.7"/>
+          <circle class="env-h-star s3" cx="150"  cy="28"  r="1.2" opacity="0.95"/>
+          <circle class="env-h-star"    cx="200"  cy="128" r="0.7" opacity="0.6"/>
+          <circle class="env-h-star s4" cx="260"  cy="60"  r="1.1" opacity="0.85"/>
+          <circle class="env-h-star s2" cx="320"  cy="110" r="0.9" opacity="0.75"/>
+          <circle class="env-h-star"    cx="380"  cy="34"  r="1.0" opacity="0.9"/>
+          <circle class="env-h-star s3" cx="450"  cy="144" r="0.8" opacity="0.6"/>
+          <circle class="env-h-star s2" cx="510"  cy="76"  r="1.2" opacity="0.9"/>
+          <circle class="env-h-star"    cx="570"  cy="22"  r="0.9" opacity="0.85"/>
+          <circle class="env-h-star s4" cx="620"  cy="122" r="0.7" opacity="0.55"/>
+          <circle class="env-h-star s2" cx="690"  cy="54"  r="1.1" opacity="0.9"/>
+          <circle class="env-h-star"    cx="760"  cy="98"  r="0.8" opacity="0.7"/>
+          <circle class="env-h-star s3" cx="820"  cy="32"  r="1.3" opacity="1"/>
+          <circle class="env-h-star"    cx="880"  cy="134" r="0.8" opacity="0.6"/>
+          <circle class="env-h-star s4" cx="940"  cy="70"  r="1.0" opacity="0.85"/>
+          <circle class="env-h-star s2" cx="1000" cy="112" r="0.9" opacity="0.75"/>
+          <circle class="env-h-star"    cx="1060" cy="40"  r="1.2" opacity="0.95"/>
+          <circle class="env-h-star s3" cx="1110" cy="92"  r="0.8" opacity="0.7"/>
+          <circle class="env-h-star"    cx="1180" cy="62"  r="1.0" opacity="0.85"/>
+          <circle class="env-h-star s4" cx="1240" cy="24"  r="0.9" opacity="0.85"/>
+          <circle class="env-h-star s2" cx="1300" cy="114" r="0.8" opacity="0.65"/>
+          <circle class="env-h-star"    cx="1360" cy="50"  r="1.1" opacity="0.9"/>
+          <circle class="env-h-star s3" cx="1410" cy="90"  r="0.8" opacity="0.7"/>
+          <!-- second band, mid-sky -->
+          <circle class="env-h-star s2" cx="80"   cy="160" r="0.8" opacity="0.6"/>
+          <circle class="env-h-star"    cx="290"  cy="170" r="0.9" opacity="0.65"/>
+          <circle class="env-h-star s4" cx="490"  cy="156" r="0.8" opacity="0.55"/>
+          <circle class="env-h-star s3" cx="700"  cy="168" r="0.9" opacity="0.6"/>
+          <circle class="env-h-star"    cx="920"  cy="158" r="0.8" opacity="0.55"/>
+          <circle class="env-h-star s2" cx="1130" cy="172" r="0.9" opacity="0.6"/>
+          <circle class="env-h-star s4" cx="1380" cy="162" r="0.8" opacity="0.55"/>
+          <!-- a few near the horizon line, lower density -->
+          <circle class="env-h-star s2" cx="120"  cy="200" r="0.7" opacity="0.4"/>
+          <circle class="env-h-star"    cx="420"  cy="208" r="0.7" opacity="0.35"/>
+          <circle class="env-h-star s4" cx="780"  cy="206" r="0.7" opacity="0.4"/>
+          <circle class="env-h-star s3" cx="1080" cy="212" r="0.7" opacity="0.35"/>
+          <circle class="env-h-star s2" cx="1340" cy="202" r="0.7" opacity="0.4"/>
+        </g>
+
+        <!-- far shoreline silhouette across the horizon, very subtle -->
+        <path d="M0,238 Q120,228 240,236 Q380,244 520,232 Q680,224 840,236 Q1020,244 1200,232 Q1340,224 1440,232 L1440,252 L0,252 Z"
+              fill="#0a142e" opacity="0.55"/>
+
+        <!-- continuous coastal landform running edge-to-edge, the lighthouse
+             sits on the higher right-side rise. Subtle organic profile. -->
+        <path d="M0,246 Q90,242 180,244 Q260,246 340,243 Q420,238 500,244 Q580,250 680,244 Q780,240 880,236
+                 Q980,228 1080,218 Q1140,210 1190,206 Q1240,208 1300,218 Q1360,228 1440,236 L1440,254 L0,254 Z"
+              fill="#0e1a36" opacity="0.92"/>
+        <!-- slightly deeper landform behind for layered depth -->
+        <path d="M0,252 Q140,248 280,250 Q420,252 560,250 Q700,248 840,248 Q980,246 1120,244 Q1260,244 1440,246 L1440,256 L0,256 Z"
+              fill="#091428" opacity="0.95"/>
+
+        <!-- distant lighthouse, pulled inward from the right edge so it stays
+             on-screen at all viewport widths. Silhouette in #233659 (lighter
+             than the deep navy bg) so it actually reads against the ocean. -->
+        <g transform="translate(1190,242) scale(2.6)">
+          <!-- warm beacon halo — gentle, not theatrical -->
+          <circle class="env-lighthouse-beacon" cx="0" cy="-12" r="14" fill="url(#env-h-beacon)"/>
+          <!-- base / rock outcrop -->
+          <ellipse cx="0" cy="-1" rx="9" ry="1.6" fill="#192a4c"/>
+          <!-- tower -->
+          <rect x="-1.6" y="-14" width="3.2" height="13" fill="#233659"/>
+          <!-- single horizontal stripe (Sanibel-ish) -->
+          <rect x="-1.6" y="-9" width="3.2" height="1.4" fill="#0a142e"/>
+          <!-- watch / lantern room -->
+          <rect x="-2.4" y="-17" width="4.8" height="3.6" fill="#233659"/>
+          <!-- glowing lantern light -->
+          <rect x="-1.1" y="-16.6" width="2.2" height="2.8" fill="#ffe19a"/>
+          <!-- tiny roof cap -->
+          <path d="M-2.4,-17 L0,-19.6 L2.4,-17 Z" fill="#152340"/>
+        </g>
+
+        <!-- distant tiny boat light, mid-horizon -->
+        <circle cx="640" cy="242" r="1.1" fill="#ffe19a" opacity="0.6"/>
+        <!-- second distant boat light, near the shoreline -->
+        <circle cx="420" cy="240" r="0.9" fill="#ffe19a" opacity="0.5"/>
+
+        <!-- wave layer 1 — mid distance -->
+        <path d="M0,290 C220,308 440,278 660,296 C880,316 1100,282 1320,300 C1380,306 1420,300 1440,304 L1440,500 L0,500 Z"
+              fill="url(#env-h-wave-1)"/>
+
+        <!-- wave layer 2 — closer foreground -->
+        <path d="M0,350 C220,368 440,344 660,362 C880,380 1100,344 1320,362 C1380,368 1420,362 1440,366 L1440,500 L0,500 Z"
+              fill="url(#env-h-wave-2)"/>
+
+        <!-- deepest foreground wave — the closest layer -->
+        <path d="M0,418 C220,432 440,412 660,428 C880,444 1100,412 1320,428 C1380,432 1420,428 1440,432 L1440,500 L0,500 Z"
+              fill="#040a18" opacity="0.95"/>
+
+        <!-- solid bottom band matching the footer color for seamless transition -->
+        <rect x="0" y="480" width="1440" height="20" fill="#050d1e"/>
+
+        <!-- a few VERY subtle foam glints — sparse, spread across the new larger wave area -->
+        <g stroke="#ffffff" stroke-width="0.8" fill="none" opacity="0.10" stroke-linecap="round">
+          <path d="M180,318 q14,-3 26,0"/>
+          <path d="M760,326 q14,-3 26,0"/>
+          <path d="M1080,318 q14,-3 26,0"/>
+          <path d="M340,386 q14,-3 26,0"/>
+          <path d="M920,394 q14,-3 26,0"/>
+          <path d="M1240,388 q14,-3 26,0"/>
+          <path d="M220,452 q16,-4 30,0"/>
+          <path d="M620,458 q16,-4 30,0"/>
+          <path d="M1040,454 q16,-4 30,0"/>
+        </g>
+      </svg>
       <div class="section-inner">
         <header class="section-head section-head--center">
           <p class="kicker">Visit Us on Sanibel</p>
           <h2 class="section-title section-title--display">Pull up a stool.<br/><em>The kitchen's on.</em></h2>
-          <p class="section-lede section-lede--light">Right on Periwinkle Way &mdash; an easy drive from the beach, the causeway, or anywhere on the island.</p>
+          <p class="section-lede section-lede--light">Right on Periwinkle Way &mdash; minutes from the beach, the causeway, and the rest of the island.</p>
         </header>
         <div class="hours-visit hours-visit--v2">
           <div class="hours-card">
@@ -1181,11 +1416,11 @@
               <span class="hours-card-tz">Eastern Time</span>
             </div>
             <ul class="hours-list" id="hours-list">
-              <li data-day="0"><span class="day">Sunday</span><span class="time">11 AM – 7 PM</span></li>
-              <li data-day="1"><span class="day">Monday</span><span class="time">11 AM – 7 PM</span></li>
-              <li data-day="2"><span class="day">Tuesday</span><span class="time">11 AM – 7 PM</span></li>
-              <li data-day="3"><span class="day">Wednesday</span><span class="time">11 AM – 7 PM</span></li>
-              <li data-day="4"><span class="day">Thursday</span><span class="time">11 AM – 7 PM</span></li>
+              <li data-day="0"><span class="day">Sunday</span><span class="time">11 AM – 8 PM</span></li>
+              <li data-day="1"><span class="day">Monday</span><span class="time">11 AM – 8 PM</span></li>
+              <li data-day="2"><span class="day">Tuesday</span><span class="time">11 AM – 8 PM</span></li>
+              <li data-day="3"><span class="day">Wednesday</span><span class="time">11 AM – 8 PM</span></li>
+              <li data-day="4"><span class="day">Thursday</span><span class="time">11 AM – 8 PM</span></li>
               <li data-day="5"><span class="day">Friday</span><span class="time">11 AM – 8 PM</span></li>
               <li data-day="6"><span class="day">Saturday</span><span class="time">11 AM – 8 PM</span></li>
             </ul>
@@ -1212,10 +1447,11 @@
         </div>
       </div>
     </section>
+    </div><!-- /.coastal-zone -->
   </main>
 
   <footer class="site-footer">
-    <p>&copy; <span id="year"></span> Island Panda &middot; 2003 Periwinkle Way, Sanibel, FL 33957</p>
+    <p>&copy; <span id="year"></span> Island Panda &middot; 2003 Periwinkle Way, Sanibel, FL 33957 &middot; <a href="tel:+12395790783">(239) 579-0783</a></p>
   </footer>
 
   <!-- sticky mobile bottom CTA bar — quick conversion access on phones -->
@@ -1239,11 +1475,11 @@
 
     // Hours: 0=Sun ... 6=Sat. Times in 24h Eastern Time.
     const HOURS = [
-      { open: 11, close: 19 }, // Sun
-      { open: 11, close: 19 }, // Mon
-      { open: 11, close: 19 }, // Tue
-      { open: 11, close: 19 }, // Wed
-      { open: 11, close: 19 }, // Thu
+      { open: 11, close: 20 }, // Sun
+      { open: 11, close: 20 }, // Mon
+      { open: 11, close: 20 }, // Tue
+      { open: 11, close: 20 }, // Wed
+      { open: 11, close: 20 }, // Thu
       { open: 11, close: 20 }, // Fri
       { open: 11, close: 20 }, // Sat
     ];

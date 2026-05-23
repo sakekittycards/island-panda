@@ -2321,9 +2321,8 @@ body.night .section-title.dark {
 .eyebrow.closed .dot { animation: none; opacity: 0.85; }
 
 /* ---------- menu page ---------- */
-/* Menu inherits body's day/dawn/dusk/night gradient from the top of this file —
-   no static override here, so the menu evolves with the homepage time-of-day. */
-.menu-page .ocean-bg { display: none; }
+/* Menu shares the homepage's ocean-bg AND the body's day/dawn/dusk/night
+   gradient. No menu-specific background overrides — same world. */
 
 .menu-hero {
   position: relative;
@@ -4543,106 +4542,43 @@ body.dawn  .coastal-zone {
 }
 
 /* ==========================================================================
-   MENU PAGE V2 — luxury sushi-at-night
-   Restrained. Dark, moody coastal backdrop with phase-aware tinting at the
-   page edges only. The MENU is the page; atmosphere is the frame.
+   MENU PAGE — reuses the homepage's ocean-bg + body phase gradients verbatim.
+   No custom atmosphere, no separate scene. Just lift the menu content above
+   the ocean-bg (z:0) and let the time-of-day system flow through unchanged.
    ========================================================================== */
 
-/* ----- moody coastal base, regardless of homepage's bright sky -----
-   We override body.* phase gradients on the menu page so the menu never
-   becomes a bright tropical scene. Phase only shifts the warm/cool accent. */
-body.menu-page {
-  color: #f2e9d4;
-  background: linear-gradient(180deg,
-    #0c1a36 0%,
-    #112347 35%,
-    #142b56 70%,
-    #18305e 100%);
-}
-body.menu-page.dawn {
-  background: linear-gradient(180deg,
-    #2a1330 0%,
-    #1a1a3e 28%,
-    #142b56 70%,
-    #18305e 100%);
-}
-body.menu-page.dusk {
-  background: linear-gradient(180deg,
-    #3a1532 0%,
-    #1f1a4a 28%,
-    #142b56 70%,
-    #18305e 100%);
-}
-body.menu-page.night {
-  background: linear-gradient(180deg,
-    #050d22 0%,
-    #08142e 35%,
-    #0c1a3e 70%,
-    #122148 100%);
-}
-
-/* ----- atmosphere: edge-only accents, never a fullscreen scene -----
-   One fixed layer with TWO subtle effects:
-   (1) a soft warm/cool glow tucked just under the top nav (phase accent)
-   (2) a subtle vignette to deepen the page edges (moody, premium)
-   Everything else lives in the coastal-zone footer (edge transition). */
-.menu-atmosphere {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-.menu-atmosphere::before {
-  /* phase accent — a wide soft band just below the top of the viewport */
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 320px;
-  background: radial-gradient(ellipse 70% 100% at 50% 0%,
-    rgba(120, 180, 220, 0.18), transparent 70%);
-  transition: background 2s ease;
-}
-body.menu-page.dawn .menu-atmosphere::before {
-  background: radial-gradient(ellipse 70% 100% at 50% 0%,
-    rgba(255, 170, 140, 0.22), transparent 70%);
-}
-body.menu-page.dusk .menu-atmosphere::before {
-  background: radial-gradient(ellipse 70% 100% at 50% 0%,
-    rgba(255, 130, 110, 0.28), transparent 70%);
-}
-body.menu-page.night .menu-atmosphere::before {
-  background: radial-gradient(ellipse 70% 100% at 50% 0%,
-    rgba(180, 200, 240, 0.10), transparent 70%);
-}
-.menu-atmosphere::after {
-  /* moody vignette anchoring the side edges */
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 60% 100% at 0% 50%, rgba(0, 0, 0, 0.22), transparent 70%),
-    radial-gradient(ellipse 60% 100% at 100% 50%, rgba(0, 0, 0, 0.22), transparent 70%);
-  pointer-events: none;
-}
-
-/* hide every fullscreen scene element if it ever ships in markup */
-.m-sun, .m-horizon, .m-island, .m-frond, .m-lighthouse, .m-stars { display: none !important; }
-
-/* ----- menu hero typography: always cream-on-dark (page is always moody) ----- */
-body.menu-page .menu-hero h1 { color: #fef0c5; text-shadow: 0 2px 22px rgba(0, 0, 0, 0.4); }
-body.menu-page .menu-hero .lede { color: rgba(255, 245, 220, 0.82); }
-body.menu-page .menu-hero .lede a { color: #ffba7e; }
-body.menu-page .menu-hero .lede a:hover { color: var(--coral); }
-
-/* ----- new layout overrides ----- */
+/* Lift body-level menu content above the homepage's ocean-bg (z:0).
+   NOTE: header.nav is intentionally NOT included — it already has its own
+   position:sticky/z-index:50, and adding position:relative here breaks the
+   sticky behavior and causes the bamboo header to scroll away with the page. */
 body.menu-page main,
 body.menu-page .menu-hero,
-body.menu-page header.nav,
-body.menu-page footer.site-footer,
-body.menu-page .coastal-zone--menu { position: relative; z-index: 1; }
+body.menu-page footer.site-footer { position: relative; z-index: 1; }
+
+/* ----- menu hero typography: mirror the homepage hero (dark on light sky,
+   cream on night sky). Same phase-aware behavior, no menu-specific overrides. */
+body.menu-page .menu-hero h1 {
+  color: #091532;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+body.menu-page .menu-hero .lede {
+  color: #1c2a45;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+body.menu-page .menu-hero .lede a { color: var(--coral-deep); font-weight: 700; }
+body.menu-page .menu-hero .lede a:hover { color: var(--coral); }
+
+body.dawn.menu-page .menu-hero h1,
+body.dusk.menu-page .menu-hero h1 { color: #1d2a4a; }
+body.night.menu-page .menu-hero h1 {
+  color: #fef0c5;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
+}
+body.night.menu-page .menu-hero .lede {
+  color: #e9eef9;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+body.night.menu-page .menu-hero .lede a { color: #ffba7e; }
 
 /* wider container so the menu doesn't feel like it's floating in a void */
 .menu-main {
@@ -4700,12 +4636,12 @@ body.menu-page .coastal-zone--menu { position: relative; z-index: 1; }
   font-family: 'Fredoka', sans-serif;
   font-size: 0.92rem;
   font-weight: 600;
-  color: rgba(255, 245, 220, 0.85);
-  background: rgba(255, 255, 255, 0.06);
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.85);
   padding: 9px 18px;
   border-radius: 999px;
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(29, 58, 107, 0.12);
   white-space: nowrap;
   transition: background 0.2s, color 0.2s, transform 0.15s, border-color 0.2s, box-shadow 0.25s;
   flex: 0 0 auto;
@@ -4724,15 +4660,25 @@ body.menu-page .coastal-zone--menu { position: relative; z-index: 1; }
   box-shadow: 0 6px 18px rgba(255, 140, 66, 0.4);
 }
 
-/* when scrolled into the sticky position, get a blurred panel backdrop */
+/* when scrolled into the sticky position, get a blurred panel backdrop.
+   Phase-aware so the pills stay legible across day → night transitions. */
 .menu-jump-sticky.is-pinned {
   padding: 10px 14px;
-  background: rgba(15, 25, 50, 0.68);
+  background: rgba(255, 250, 240, 0.78);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.30), 0 1px 0 rgba(255, 255, 255, 0.04) inset;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 10px 28px rgba(15, 37, 72, 0.12), 0 1px 0 rgba(15, 37, 72, 0.06) inset;
+  border-bottom: 1px solid rgba(15, 37, 72, 0.06);
 }
+body.dawn .menu-jump-sticky.is-pinned { background: rgba(255, 220, 200, 0.72); }
+body.dusk .menu-jump-sticky.is-pinned { background: rgba(80, 30, 70, 0.55); border-bottom-color: rgba(255, 255, 255, 0.06); }
+body.dusk .menu-jump-sticky.is-pinned a { background: rgba(255, 255, 255, 0.18); color: #fcefe5; border-color: rgba(255, 255, 255, 0.18); }
+body.dusk .menu-jump-sticky.is-pinned a:hover,
+body.dusk .menu-jump-sticky.is-pinned a.active { background: var(--coral); color: #fff; border-color: var(--coral); }
+body.night .menu-jump-sticky.is-pinned { background: rgba(15, 25, 50, 0.65); border-bottom-color: rgba(255, 255, 255, 0.06); }
+body.night .menu-jump-sticky.is-pinned a { background: rgba(255, 255, 255, 0.06); color: #e6ecf5; border-color: rgba(255, 255, 255, 0.12); }
+body.night .menu-jump-sticky.is-pinned a:hover,
+body.night .menu-jump-sticky.is-pinned a.active { background: var(--coral); color: #fff; border-color: var(--coral); }
 
 /* ----- premium menu cards — light-on-dark, no per-phase swap ----- */
 .menu-section {
@@ -4838,67 +4784,18 @@ body.menu-page .coastal-zone--menu { position: relative; z-index: 1; }
   pointer-events: none;
 }
 
-/* ----- disclaimer ----- */
+/* ----- disclaimer — phase-aware so it reads on every sky ----- */
 .menu-disclaimer {
   font-size: 0.82rem;
   margin-top: 40px;
-  color: rgba(242, 233, 212, 0.55);
+  color: rgba(15, 37, 72, 0.62);
+  text-align: center;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
 }
-
-/* ----- coastal footer for the menu page — dark ocean fade only,
-   no warm sand bridge since the menu page is already dark coastal ----- */
-.coastal-zone--menu {
-  position: relative;
-  isolation: isolate;
-  background: linear-gradient(180deg,
-    #18305e 0%,
-    #142b56 15%,
-    #0e1c3a 50%,
-    #08142a 80%,
-    #050d1e 100%);
-  margin-top: 0;
-  padding-top: 0;
-  z-index: 1;
-}
-/* override the global coastal-zone phase-lock so it doesn't reintroduce the
-   warm sand colors on the menu page */
-body.menu-page.night .coastal-zone--menu,
-body.menu-page.dusk  .coastal-zone--menu,
-body.menu-page.dawn  .coastal-zone--menu {
-  background: linear-gradient(180deg,
-    #18305e 0%,
-    #142b56 15%,
-    #0e1c3a 50%,
-    #08142a 80%,
-    #050d1e 100%);
-}
-.env-horizon--menu {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 520px;             /* expanded for breathing room */
-  pointer-events: none;
-  margin-bottom: -40px;      /* bleed into footer for seamless fade-off */
-  overflow: hidden;
-  /* dual-layer mask:
-     (1) fade the top into the dark body bg above (no hard horizon line)
-     (2) fade BOTH side edges into darkness so the shoreline reads as a
-         distant coast continuing past the frame, not a centered strip */
-  -webkit-mask-image:
-    linear-gradient(180deg, transparent 0%, #000 14%, #000 100%),
-    linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
-  -webkit-mask-composite: source-in;
-          mask-image:
-    linear-gradient(180deg, transparent 0%, #000 14%, #000 100%),
-    linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
-          mask-composite: intersect;
-}
-.env-horizon--menu svg { display: block; width: 100%; height: 100%; }
-@media (max-width: 720px) {
-  .env-horizon--menu { height: 340px; margin-bottom: -28px; }
-}
-.coastal-zone--menu { padding-bottom: 48px; }
-@media (max-width: 720px) { .coastal-zone--menu { padding-bottom: 32px; } }
+body.night.menu-page .menu-disclaimer { color: rgba(230, 236, 245, 0.55); }
 
 /* ----- responsive ----- */
 @media (max-width: 760px) {
@@ -4909,5 +4806,4 @@ body.menu-page.dawn  .coastal-zone--menu {
   .menu-jump-sticky { padding: 10px 8px; }
   .menu-jump-sticky a { font-size: 0.85rem; padding: 8px 14px; }
   .menu-jump-inner { justify-content: flex-start; }
-  .menu-atmosphere::before { height: 240px; }
 }

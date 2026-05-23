@@ -130,12 +130,387 @@
 <body class="menu-page">
 
   <!-- ============================================================
-       ATMOSPHERE — restrained, edge-only.
-       Just a phase-aware glow under the nav + side vignette.
-       All scene elements (sun, island, lighthouse, palms) removed —
-       the cinematic scene lives in the footer transition only.
+       OCEAN BACKGROUND — the exact same cinematic scene as the homepage.
+       All atmosphere, time-of-day transitions, sun/moon, stars, island,
+       lighthouse, waves, and sea life are shared. The menu cards layer
+       on top of this; below the first viewport the body's phase gradient
+       continues so the page never feels detached from the homepage world.
        ============================================================ -->
-  <div class="menu-atmosphere" aria-hidden="true"></div>
+  <div class="ocean-bg" aria-hidden="true">
+    <!-- distant sun glow -->
+    <div class="sun"></div>
+
+    <!-- horizon line — where sky meets distant sea -->
+    <div class="horizon"></div>
+
+    <!-- shooting star — only visible at night, streaks diagonally across the sky -->
+    <svg class="shooting-star" viewBox="0 0 90 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="trailgrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"  stop-color="#ffffff" stop-opacity="0"/>
+          <stop offset="60%" stop-color="#ffffff" stop-opacity="0.5"/>
+          <stop offset="92%" stop-color="#ffffff" stop-opacity="1"/>
+          <stop offset="100%" stop-color="#fff8d6" stop-opacity="1"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,8 L84,8" stroke="url(#trailgrad)" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="84" cy="8" r="4.5" fill="#fff8d6" opacity="0.35"/>
+      <circle cx="84" cy="8" r="2.6" fill="#ffffff"/>
+    </svg>
+
+    <!-- birds -->
+    <svg class="bird bird-1" viewBox="0 0 60 22" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2,16 Q14,2 30,12 Q46,2 58,16" stroke="#1d3a6b" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <ellipse cx="30" cy="13.5" rx="3" ry="1.6" fill="#1d3a6b"/>
+      <path d="M33,13 L37,15 L33,16.5 Z" fill="#ff9a40"/>
+    </svg>
+    <svg class="bird bird-2" viewBox="0 0 60 22" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2,16 Q14,2 30,12 Q46,2 58,16" stroke="#1d3a6b" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <ellipse cx="30" cy="13.5" rx="3" ry="1.6" fill="#1d3a6b"/>
+      <path d="M33,13 L37,15 L33,16.5 Z" fill="#ff9a40"/>
+    </svg>
+    <svg class="bird bird-3" viewBox="0 0 60 22" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2,16 Q14,2 30,12 Q46,2 58,16" stroke="#1d3a6b" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <ellipse cx="30" cy="13.5" rx="3" ry="1.6" fill="#1d3a6b"/>
+      <path d="M33,13 L37,15 L33,16.5 Z" fill="#ff9a40"/>
+    </svg>
+    <svg class="bird bird-4" viewBox="0 0 60 22" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2,16 Q14,2 30,12 Q46,2 58,16" stroke="#1d3a6b" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <!-- distant cruise ship (DRAW FIRST so the island below covers it visually) -->
+    <svg class="cruise cruise-pre" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M6,42 Q100,52 194,42 L182,54 L18,54 Z" fill="#1d3a6b"/>
+      <path d="M14,42 L186,42 L186,46 L14,46 Z" fill="#0f2548"/>
+      <rect x="22" y="28" width="156" height="14" fill="#ffffff"/>
+      <rect x="32" y="20" width="136" height="9"  fill="#fafafa"/>
+      <rect x="48" y="13" width="104" height="8"  fill="#ffffff"/>
+      <g fill="#7ec9e5">
+        <rect x="26" y="32" width="3" height="2"/><rect x="32" y="32" width="3" height="2"/>
+        <rect x="38" y="32" width="3" height="2"/><rect x="44" y="32" width="3" height="2"/>
+        <rect x="50" y="32" width="3" height="2"/><rect x="56" y="32" width="3" height="2"/>
+        <rect x="62" y="32" width="3" height="2"/><rect x="68" y="32" width="3" height="2"/>
+        <rect x="74" y="32" width="3" height="2"/><rect x="80" y="32" width="3" height="2"/>
+        <rect x="86" y="32" width="3" height="2"/><rect x="92" y="32" width="3" height="2"/>
+        <rect x="98" y="32" width="3" height="2"/><rect x="104" y="32" width="3" height="2"/>
+        <rect x="110" y="32" width="3" height="2"/><rect x="116" y="32" width="3" height="2"/>
+        <rect x="122" y="32" width="3" height="2"/><rect x="128" y="32" width="3" height="2"/>
+        <rect x="134" y="32" width="3" height="2"/><rect x="140" y="32" width="3" height="2"/>
+        <rect x="146" y="32" width="3" height="2"/><rect x="152" y="32" width="3" height="2"/>
+        <rect x="158" y="32" width="3" height="2"/><rect x="164" y="32" width="3" height="2"/>
+        <rect x="170" y="32" width="3" height="2"/>
+      </g>
+      <rect x="76"  y="3" width="9" height="14" rx="1.5" fill="#ff8c42"/>
+      <rect x="105" y="3" width="9" height="14" rx="1.5" fill="#ff8c42"/>
+      <rect x="14" y="44" width="172" height="1.8" fill="#ff8c42" opacity="0.85"/>
+      <path d="M-8,56 Q60,60 100,57 Q140,54 208,58" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.6"/>
+    </svg>
+
+    <!-- sailboat — sails through the water, passes BEHIND the island -->
+    <svg class="sailboat" viewBox="0 0 140 130" xmlns="http://www.w3.org/2000/svg">
+      <line x1="70" y1="6" x2="70" y2="92" stroke="#3e2917" stroke-width="3"/>
+      <path d="M70,6 L82,10 L70,14 Z" fill="#ff8c42"/>
+      <path d="M70,10 L70,90 L114,90 Z" fill="#ffffff" stroke="#1d3a6b" stroke-width="1.2"/>
+      <path d="M70,32 L70,90 L100,90 Z" fill="#fef6e5" opacity="0.7"/>
+      <path d="M70,14 L70,90 L34,90 Z" fill="#f5e0b5" stroke="#1d3a6b" stroke-width="1.2"/>
+      <path d="M14,94 Q70,114 126,94 L110,112 L30,112 Z" fill="#7a4a2a"/>
+      <path d="M14,94 Q70,108 126,94" stroke="#3e2917" stroke-width="1.5" fill="none"/>
+      <path d="M22,99 Q70,113 118,99" stroke="#ff8c42" stroke-width="2" fill="none" opacity="0.85"/>
+      <path d="M4,118 Q40,124 70,120 Q100,116 136,122" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.6" stroke-linecap="round"/>
+      <path d="M16,126 Q50,130 70,128 Q90,126 124,128" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.4" stroke-linecap="round"/>
+    </svg>
+
+    <!-- island: discrete cartoon island, both ends curving down to the waterline -->
+    <svg class="island" viewBox="0 0 540 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+      <ellipse cx="270" cy="206" rx="240" ry="12" fill="#fef0c5"/>
+      <ellipse cx="270" cy="204" rx="220" ry="6"  fill="#fef9d6" opacity="0.8"/>
+      <path d="M70,200 Q90,168 130,150 Q200,128 270,124 Q340,128 410,150 Q450,168 470,200 Z" fill="#3a8a55"/>
+      <g>
+        <g fill="#246b3e">
+          <ellipse cx="100" cy="170" rx="18" ry="14"/>
+          <ellipse cx="135" cy="155" rx="20" ry="16"/>
+          <ellipse cx="175" cy="142" rx="22" ry="17"/>
+          <ellipse cx="220" cy="134" rx="22" ry="17"/>
+          <ellipse cx="270" cy="130" rx="22" ry="17"/>
+          <ellipse cx="320" cy="134" rx="22" ry="17"/>
+          <ellipse cx="365" cy="142" rx="22" ry="17"/>
+          <ellipse cx="405" cy="155" rx="20" ry="16"/>
+          <ellipse cx="440" cy="170" rx="18" ry="14"/>
+        </g>
+        <g fill="#4a9c63">
+          <ellipse cx="115" cy="168" rx="14" ry="11"/>
+          <ellipse cx="155" cy="152" rx="16" ry="12"/>
+          <ellipse cx="200" cy="140" rx="16" ry="12"/>
+          <ellipse cx="245" cy="134" rx="16" ry="12"/>
+          <ellipse cx="295" cy="132" rx="16" ry="12"/>
+          <ellipse cx="345" cy="138" rx="16" ry="12"/>
+          <ellipse cx="385" cy="150" rx="14" ry="11"/>
+          <ellipse cx="425" cy="166" rx="12" ry="9"/>
+        </g>
+        <g fill="#7ec19a" opacity="0.7">
+          <ellipse cx="160" cy="148" rx="8" ry="3.5"/>
+          <ellipse cx="220" cy="132" rx="10" ry="4"/>
+          <ellipse cx="280" cy="128" rx="10" ry="4"/>
+          <ellipse cx="340" cy="134" rx="10" ry="4"/>
+          <ellipse cx="395" cy="148" rx="8" ry="3.5"/>
+        </g>
+      </g>
+      <!-- Sanibel Lighthouse -->
+      <g transform="translate(400,198) scale(1.3)">
+        <ellipse cx="0" cy="4" rx="32" ry="4" fill="#1d3a6b" opacity="0.25"/>
+        <rect x="-24" y="-18" width="48" height="20" fill="#fafafa" stroke="#1d3a6b" stroke-width="1"/>
+        <path d="M-26,-18 L0,-32 L26,-18 Z" fill="#c0594a" stroke="#7a2e22" stroke-width="0.8"/>
+        <path d="M-26,-18 L0,-32 L26,-18 L0,-30 Z" fill="#7a2e22" opacity="0.35"/>
+        <rect x="-4" y="-12" width="8" height="14" fill="#5a3e2a"/>
+        <rect x="-4" y="-12" width="8" height="2"  fill="#3e2917"/>
+        <rect x="-18" y="-12" width="8" height="6" fill="#7ec9e5" stroke="#1d3a6b" stroke-width="0.4"/>
+        <rect x="10"  y="-12" width="8" height="6" fill="#7ec9e5" stroke="#1d3a6b" stroke-width="0.4"/>
+        <line x1="-14" y1="-12" x2="-14" y2="-6" stroke="#1d3a6b" stroke-width="0.4"/>
+        <line x1="14"  y1="-12" x2="14"  y2="-6" stroke="#1d3a6b" stroke-width="0.4"/>
+        <line x1="-15" y1="-32" x2="-7" y2="-86" stroke="#3e2917" stroke-width="2.4" stroke-linecap="round"/>
+        <line x1="15"  y1="-32" x2="7"  y2="-86" stroke="#3e2917" stroke-width="2.4" stroke-linecap="round"/>
+        <line x1="-13"  y1="-46" x2="13"  y2="-46" stroke="#3e2917" stroke-width="1.2"/>
+        <line x1="-11"  y1="-60" x2="11"  y2="-60" stroke="#3e2917" stroke-width="1.2"/>
+        <line x1="-9"   y1="-74" x2="9"   y2="-74" stroke="#3e2917" stroke-width="1.2"/>
+        <line x1="-14" y1="-32" x2="12.5" y2="-46" stroke="#3e2917" stroke-width="0.9"/>
+        <line x1="14"  y1="-32" x2="-12.5" y2="-46" stroke="#3e2917" stroke-width="0.9"/>
+        <line x1="-12.5" y1="-46" x2="10.5" y2="-60" stroke="#3e2917" stroke-width="0.9"/>
+        <line x1="12.5"  y1="-46" x2="-10.5" y2="-60" stroke="#3e2917" stroke-width="0.9"/>
+        <line x1="-10.5" y1="-60" x2="8.5" y2="-74" stroke="#3e2917" stroke-width="0.9"/>
+        <line x1="10.5"  y1="-60" x2="-8.5" y2="-74" stroke="#3e2917" stroke-width="0.9"/>
+        <rect x="-9" y="-92" width="18" height="8" fill="#fafafa" stroke="#1d3a6b" stroke-width="0.7"/>
+        <rect x="-9" y="-92" width="18" height="2" fill="#1d3a6b"/>
+        <rect x="-7" y="-104" width="14" height="12" fill="#ffd97a" stroke="#3e2917" stroke-width="0.7"/>
+        <line x1="-5" y1="-103" x2="-5" y2="-93" stroke="#3e2917" stroke-width="0.5"/>
+        <line x1="0"  y1="-104" x2="0"  y2="-92" stroke="#3e2917" stroke-width="0.5"/>
+        <line x1="5"  y1="-103" x2="5"  y2="-93" stroke="#3e2917" stroke-width="0.5"/>
+        <path d="M-9,-104 L0,-118 L9,-104 Z" fill="#3e2917"/>
+        <path d="M-9,-104 L0,-117 L9,-104 Z" fill="#5a3e2a" opacity="0.5"/>
+        <line x1="0" y1="-118" x2="0" y2="-126" stroke="#3e2917" stroke-width="1.2"/>
+        <circle cx="0" cy="-126" r="1.4" fill="#3e2917"/>
+        <circle class="lighthouse-beacon" cx="0" cy="-98" r="22" fill="rgba(255,217,122,0.5)"/>
+      </g>
+      <!-- shells -->
+      <g class="beach-shells">
+        <g transform="translate(80,210)"><g class="shell">
+          <path d="M-5,2 Q-5,-4 0,-4 Q5,-4 5,2 L3,3 L-3,3 Z" fill="#ff7a3a" stroke="#a83518" stroke-width="0.3"/>
+          <path d="M-3,-1 Q0,-3 3,-1" stroke="#a83518" stroke-width="0.3" fill="none"/>
+          <path d="M-2,1 Q0,-1 2,1"   stroke="#a83518" stroke-width="0.3" fill="none"/>
+        </g></g>
+        <g transform="translate(120,212)"><g class="shell">
+          <path d="M-7,1 Q-7,-6 0,-7 Q7,-6 7,1 Z" fill="#ffd97a" stroke="#c89018" stroke-width="0.3"/>
+          <line x1="-5" y1="0"  x2="-3" y2="-6" stroke="#c89018" stroke-width="0.25"/>
+          <line x1="-2" y1="-1" x2="-1" y2="-7" stroke="#c89018" stroke-width="0.25"/>
+          <line x1="2"  y1="-1" x2="1"  y2="-7" stroke="#c89018" stroke-width="0.25"/>
+          <line x1="5"  y1="0"  x2="3"  y2="-6" stroke="#c89018" stroke-width="0.25"/>
+        </g></g>
+        <g transform="translate(155,213)"><g class="shell">
+          <circle r="4" fill="#ede0c2" stroke="#a8845a" stroke-width="0.3"/>
+          <path d="M0,-2.5 L0.7,-0.8 L2.4,-0.6 L1.1,0.5 L1.5,2.3 L0,1.3 L-1.5,2.3 L-1.1,0.5 L-2.4,-0.6 L-0.7,-0.8 Z" fill="#a8845a" opacity="0.6"/>
+        </g></g>
+        <g transform="translate(220,213)"><g class="shell">
+          <path d="M-5,1 Q0,-4 5,1 L3,2 L-3,2 Z" fill="#7ec9e5" stroke="#2a7d9c" stroke-width="0.3"/>
+          <line x1="-2.5" y1="0" x2="-2.5" y2="2" stroke="#2a7d9c" stroke-width="0.25"/>
+          <line x1="0"    y1="-1" x2="0"    y2="2" stroke="#2a7d9c" stroke-width="0.25"/>
+          <line x1="2.5"  y1="0" x2="2.5"  y2="2" stroke="#2a7d9c" stroke-width="0.25"/>
+        </g></g>
+        <g transform="translate(290,212)"><g class="shell">
+          <path d="M-4,2 Q-5,-2 -1,-3 Q3,-3 3,1 Q3,4 0,3 Q-1,2 0,1 Q2,1 1,2" fill="none" stroke="#e84a8c" stroke-width="1.6" stroke-linecap="round"/>
+        </g></g>
+        <g transform="translate(340,214)"><g class="shell">
+          <path d="M-5,1 Q-5,-4 0,-5 Q5,-4 5,1 Z" fill="#c8a6e5" stroke="#7a4ea8" stroke-width="0.3"/>
+          <line x1="-3" y1="0"  x2="-2" y2="-4" stroke="#7a4ea8" stroke-width="0.2"/>
+          <line x1="0"  y1="-1" x2="0"  y2="-5" stroke="#7a4ea8" stroke-width="0.2"/>
+          <line x1="3"  y1="0"  x2="2"  y2="-4" stroke="#7a4ea8" stroke-width="0.2"/>
+        </g></g>
+      </g>
+      <!-- beach cabana -->
+      <g transform="translate(180,206)">
+        <line x1="-12" y1="0" x2="-12" y2="-10" stroke="#5a3e2a" stroke-width="1.4"/>
+        <line x1="12"  y1="0" x2="12"  y2="-10" stroke="#5a3e2a" stroke-width="1.4"/>
+        <path d="M-18,-10 Q0,-22 18,-10 Z" fill="#a87232" stroke="#5a3e2a" stroke-width="0.8"/>
+        <path d="M-18,-10 Q0,-18 18,-10" stroke="#7a4a2a" stroke-width="0.6" fill="none"/>
+        <path d="M-15,-10 Q-12,-15 -10,-10" stroke="#7a4a2a" stroke-width="0.4" fill="none"/>
+        <path d="M-5,-10 Q-2,-16 0,-10" stroke="#7a4a2a" stroke-width="0.4" fill="none"/>
+        <path d="M5,-10 Q8,-15 10,-10" stroke="#7a4a2a" stroke-width="0.4" fill="none"/>
+        <ellipse cx="0" cy="2" rx="14" ry="2" fill="#1d3a6b" opacity="0.2"/>
+      </g>
+      <!-- palms -->
+      <g class="palm" data-tree="1" transform="translate(80,202)">
+        <path d="M0,0 Q-3,-30 -1,-58 Q1,-86 -2,-104" stroke="#6b4626" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="-2" cy="-25" rx="3.5" ry="0.8" fill="#4a2f18"/>
+        <ellipse cx="0"  cy="-50" rx="3.5" ry="0.8" fill="#4a2f18"/>
+        <ellipse cx="-2" cy="-75" rx="3.5" ry="0.8" fill="#4a2f18"/>
+        <circle class="coconut" cx="-4" cy="-100" r="3" fill="#3a2412"/>
+        <circle class="coconut" cx="0"  cy="-102" r="3" fill="#3a2412"/>
+        <circle class="coconut" cx="-2" cy="-98"  r="3" fill="#3a2412"/>
+        <g fill="#246b3e">
+          <path d="M-2,-104 Q-3,-122 0,-134 Q4,-122 -2,-104 Z"/>
+          <path d="M-2,-104 Q14,-124 26,-118 Q14,-114 -2,-104 Z"/>
+          <path d="M-2,-104 Q-14,-124 -26,-118 Q-14,-114 -2,-104 Z"/>
+        </g>
+        <g fill="#3a8a55" stroke="#246b3e" stroke-width="0.6" stroke-linejoin="round">
+          <path d="M-2,-104 Q18,-114 32,-104 Q18,-104 -2,-104 Z"/>
+          <path d="M-2,-104 Q20,-94 34,-86 Q16,-100 -2,-104 Z"/>
+          <path d="M-2,-104 Q14,-86 22,-72 Q6,-94 -2,-104 Z"/>
+          <path d="M-2,-104 Q-18,-114 -32,-104 Q-18,-104 -2,-104 Z"/>
+          <path d="M-2,-104 Q-20,-94 -34,-86 Q-16,-100 -2,-104 Z"/>
+          <path d="M-2,-104 Q-14,-86 -22,-72 Q-6,-94 -2,-104 Z"/>
+        </g>
+      </g>
+      <g class="palm" data-tree="2" transform="translate(220,202)">
+        <path d="M0,0 Q3,-26 0,-52 Q-2,-78 1,-92" stroke="#5a3e2a" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <ellipse cx="0"  cy="-22" rx="2.6" ry="0.7" fill="#4a2f18"/>
+        <ellipse cx="-1" cy="-44" rx="2.6" ry="0.7" fill="#4a2f18"/>
+        <ellipse cx="0"  cy="-66" rx="2.6" ry="0.7" fill="#4a2f18"/>
+        <circle class="coconut" cx="-2" cy="-88" r="2.2" fill="#3a2412"/>
+        <circle class="coconut" cx="2"  cy="-90" r="2.2" fill="#3a2412"/>
+        <g fill="#246b3e">
+          <path d="M1,-92 Q-1,-108 2,-118 Q4,-106 1,-92 Z"/>
+          <path d="M1,-92 Q15,-108 26,-102 Q15,-98 1,-92 Z"/>
+          <path d="M1,-92 Q-14,-108 -24,-102 Q-12,-98 1,-92 Z"/>
+        </g>
+        <g fill="#3a8a55" stroke="#246b3e" stroke-width="0.5" stroke-linejoin="round">
+          <path d="M1,-92 Q18,-100 28,-90 Q16,-94 1,-92 Z"/>
+          <path d="M1,-92 Q15,-78 24,-62 Q4,-86 1,-92 Z"/>
+          <path d="M1,-92 Q-18,-100 -28,-90 Q-16,-94 1,-92 Z"/>
+          <path d="M1,-92 Q-15,-78 -22,-62 Q-2,-86 1,-92 Z"/>
+        </g>
+      </g>
+      <g class="palm" data-tree="3" transform="translate(320,204)">
+        <path d="M0,0 Q-2,-22 0,-44 Q2,-66 -1,-78" stroke="#5a3e2a" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+        <circle class="coconut" cx="-2" cy="-74" r="1.8" fill="#3a2412"/>
+        <circle class="coconut" cx="2"  cy="-76" r="1.8" fill="#3a2412"/>
+        <g fill="#246b3e">
+          <path d="M-1,-78 Q-2,-92 1,-100 Q3,-90 -1,-78 Z"/>
+          <path d="M-1,-78 Q12,-92 22,-86 Q11,-84 -1,-78 Z"/>
+          <path d="M-1,-78 Q-12,-92 -22,-86 Q-11,-84 -1,-78 Z"/>
+        </g>
+        <g fill="#3a8a55" stroke="#246b3e" stroke-width="0.5">
+          <path d="M-1,-78 Q14,-82 22,-72 Q12,-78 -1,-78 Z"/>
+          <path d="M-1,-78 Q12,-66 18,-54 Q4,-74 -1,-78 Z"/>
+          <path d="M-1,-78 Q-14,-82 -22,-72 Q-12,-78 -1,-78 Z"/>
+          <path d="M-1,-78 Q-12,-66 -18,-54 Q-4,-74 -1,-78 Z"/>
+        </g>
+      </g>
+      <g class="palm" data-tree="4" transform="translate(450,202)">
+        <path d="M0,0 Q-2,-14 0,-28 Q2,-42 -1,-54" stroke="#5a3e2a" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+        <circle class="coconut" cx="-2" cy="-50" r="1.4" fill="#3a2412"/>
+        <circle class="coconut" cx="1"  cy="-52" r="1.4" fill="#3a2412"/>
+        <g fill="#246b3e">
+          <path d="M-1,-54 Q-2,-64 0,-72 Q2,-62 -1,-54 Z"/>
+        </g>
+        <g fill="#3a8a55" stroke="#246b3e" stroke-width="0.4">
+          <path d="M-1,-54 Q9,-62 16,-58 Q9,-58 -1,-54 Z"/>
+          <path d="M-1,-54 Q10,-50 16,-46 Q9,-52 -1,-54 Z"/>
+          <path d="M-1,-54 Q-11,-62 -18,-58 Q-11,-58 -1,-54 Z"/>
+          <path d="M-1,-54 Q-12,-50 -18,-46 Q-11,-52 -1,-54 Z"/>
+        </g>
+      </g>
+
+    <!-- pelican -->
+    <svg class="pelican" viewBox="0 0 90 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <ellipse cx="44" cy="22" rx="14" ry="6" fill="#fafafa"/>
+      <ellipse cx="40" cy="24" rx="10" ry="3" fill="#d8d8e0"/>
+      <g class="pelican-wing">
+        <path d="M48,18 Q60,4 76,12 Q60,18 48,22 Z" fill="#a8b5c0"/>
+        <path d="M48,18 Q58,8 70,14" stroke="#7a8590" stroke-width="0.7" fill="none"/>
+      </g>
+      <circle cx="60" cy="18" r="5.5" fill="#fafafa"/>
+      <path d="M62,20 L82,22 L78,28 Q66,24 62,22 Z" fill="#ff9a40"/>
+      <path d="M62,20 L82,22" stroke="#cc6a20" stroke-width="0.6" fill="none"/>
+      <path d="M64,22 Q72,26 78,28" stroke="#cc6a20" stroke-width="0.5" fill="none"/>
+      <circle cx="62" cy="16" r="1" fill="#1a1a22"/>
+      <path d="M30,22 Q22,20 18,24 L30,26 Z" fill="#a8b5c0"/>
+      <line x1="40" y1="28" x2="38" y2="34" stroke="#ff9a40" stroke-width="1.2"/>
+      <line x1="44" y1="28" x2="44" y2="34" stroke="#ff9a40" stroke-width="1.2"/>
+    </svg>
+
+    <!-- sea turtle -->
+    <svg class="seaturtle" viewBox="0 0 90 50" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <ellipse cx="45" cy="32" rx="24" ry="14" fill="#1a4a2e" opacity="0.25"/>
+      <ellipse cx="45" cy="28" rx="22" ry="14" fill="#5a8a55"/>
+      <ellipse cx="45" cy="26" rx="20" ry="12" fill="#7ec19a"/>
+      <g fill="#246b3e" opacity="0.45" stroke="#246b3e" stroke-width="0.5">
+        <path d="M37,18 L43,18 L46,22 L43,26 L37,26 L34,22 Z"/>
+        <path d="M47,18 L53,18 L56,22 L53,26 L47,26 L44,22 Z"/>
+        <path d="M37,30 L43,30 L46,34 L43,38 L37,38 L34,34 Z"/>
+        <path d="M47,30 L53,30 L56,34 L53,38 L47,38 L44,34 Z"/>
+      </g>
+      <ellipse cx="68" cy="24" rx="7" ry="5" fill="#7ea93f"/>
+      <circle cx="71" cy="22" r="1" fill="#1a1a22"/>
+      <circle cx="71" cy="22" r="0.4" fill="#fafafa"/>
+      <path d="M72,26 Q74,26 75,25" stroke="#1a4a2e" stroke-width="0.5" fill="none"/>
+      <ellipse cx="26" cy="18" rx="8" ry="3" fill="#5a8a55" transform="rotate(-25 26 18)"/>
+      <ellipse cx="62" cy="42" rx="6" ry="3" fill="#5a8a55" transform="rotate(20 62 42)"/>
+      <ellipse cx="22" cy="38" rx="6" ry="3" fill="#5a8a55" transform="rotate(20 22 38)"/>
+      <path d="M22,28 L14,30 L22,32 Z" fill="#5a8a55"/>
+    </svg>
+
+    <!-- parasailer -->
+    <svg class="parasail" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M10,30 Q50,5 90,30 Q86,28 50,28 Q14,28 10,30 Z" fill="#ff8c42"/>
+      <path d="M14,28 Q34,15 50,15 Q50,30 14,28 Z" fill="#ffd97a"/>
+      <path d="M50,15 Q66,15 86,28 Q86,30 50,30 Z" fill="#7ec9e5"/>
+      <line x1="14" y1="30" x2="48" y2="60" stroke="#1a1a22" stroke-width="0.6"/>
+      <line x1="30" y1="28" x2="49" y2="60" stroke="#1a1a22" stroke-width="0.6"/>
+      <line x1="50" y1="28" x2="50" y2="60" stroke="#1a1a22" stroke-width="0.6"/>
+      <line x1="70" y1="28" x2="51" y2="60" stroke="#1a1a22" stroke-width="0.6"/>
+      <line x1="86" y1="30" x2="52" y2="60" stroke="#1a1a22" stroke-width="0.6"/>
+      <rect x="46" y="58" width="8" height="6" fill="#3e2917" rx="1"/>
+      <circle cx="50" cy="68" r="3.5" fill="#ffd9b3"/>
+      <ellipse cx="50" cy="78" rx="4" ry="6" fill="#cc3333"/>
+      <path d="M48,82 L45,90" stroke="#1d3a6b" stroke-width="2" stroke-linecap="round"/>
+      <path d="M52,82 L55,90" stroke="#1d3a6b" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+
+    <!-- plane with banner -->
+    <svg class="plane" viewBox="0 0 280 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g transform="translate(40,4)">
+        <path d="M0,8 L160,4 L172,16 L160,28 L0,24 Z" fill="#ffffff" stroke="#1d3a6b" stroke-width="1.2"/>
+        <text x="80" y="20" text-anchor="middle" font-family="'Fredoka', sans-serif" font-weight="700" font-size="13" fill="#ff8c42">EAT AT ISLAND PANDA!</text>
+        <line x1="-2" y1="10" x2="0" y2="9" stroke="#1d3a6b" stroke-width="1"/>
+        <line x1="-2" y1="22" x2="0" y2="23" stroke="#1d3a6b" stroke-width="1"/>
+      </g>
+      <g transform="translate(228,4)">
+        <path d="M0,14 Q12,8 36,12 L42,16 L36,20 Q12,24 0,18 Z" fill="#ffffff" stroke="#1d3a6b" stroke-width="1"/>
+        <path d="M14,16 L24,4 L30,4 L26,16 Z" fill="#1d3a6b"/>
+        <path d="M2,16 L-2,4 L4,4 L8,16 Z" fill="#ff8c42"/>
+        <rect x="14" y="14" width="2.5" height="1.6" fill="#7ec9e5"/>
+        <rect x="20" y="14" width="2.5" height="1.6" fill="#7ec9e5"/>
+        <rect x="26" y="14" width="2.5" height="1.6" fill="#7ec9e5"/>
+        <circle cx="40" cy="16" r="1.5" fill="#1d3a6b"/>
+      </g>
+    </svg>
+
+    <div class="wave wave-1"></div>
+    <div class="wave wave-2"></div>
+
+    <!-- dolphins -->
+    <svg class="dolphin dolphin-1" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8,52 Q22,30 56,22 Q86,18 104,32 Q116,40 110,52 Q96,58 70,56 Q42,54 22,58 Q12,58 8,52 Z" fill="#5b87a8"/>
+      <path d="M22,56 Q50,62 86,56 Q66,60 50,60 Q32,60 22,56 Z" fill="#c8d8e2"/>
+      <path d="M60,22 Q66,8 78,18 Q72,22 64,22 Z" fill="#456e8c"/>
+      <path d="M48,46 Q42,58 56,56 Q54,52 50,46 Z" fill="#456e8c"/>
+      <path d="M8,52 Q-6,40 -10,50 Q0,50 8,52 Q-6,60 -10,54 Q0,54 8,52" fill="#5b87a8"/>
+      <circle cx="92" cy="32" r="1.6" fill="#0f2548"/>
+      <path d="M96,38 Q102,40 106,38" stroke="#0f2548" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <circle cx="0" cy="46" r="1.5" fill="#ffffff" opacity="0.7"/>
+      <circle cx="-6" cy="42" r="1" fill="#ffffff" opacity="0.6"/>
+    </svg>
+
+    <svg class="dolphin dolphin-2" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8,52 Q22,30 56,22 Q86,18 104,32 Q116,40 110,52 Q96,58 70,56 Q42,54 22,58 Q12,58 8,52 Z" fill="#5b87a8"/>
+      <path d="M22,56 Q50,62 86,56 Q66,60 50,60 Q32,60 22,56 Z" fill="#c8d8e2"/>
+      <path d="M60,22 Q66,8 78,18 Q72,22 64,22 Z" fill="#456e8c"/>
+      <path d="M48,46 Q42,58 56,56 Q54,52 50,46 Z" fill="#456e8c"/>
+      <path d="M8,52 Q-6,40 -10,50 Q0,50 8,52 Q-6,60 -10,54 Q0,54 8,52" fill="#5b87a8"/>
+      <circle cx="92" cy="32" r="1.6" fill="#0f2548"/>
+      <path d="M96,38 Q102,40 106,38" stroke="#0f2548" stroke-width="1" fill="none" stroke-linecap="round"/>
+    </svg>
+
+    <div class="wave wave-3"></div>
+  </div>
 
   <!-- ===================== NAV ===================== -->
   <header class="nav" id="nav">
@@ -299,131 +674,6 @@
     </p>
   </main>
 
-  <!-- ===================== PREMIUM COASTAL FOOTER ===================== -->
-  <div class="coastal-zone coastal-zone--menu" aria-hidden="false">
-    <div class="env-horizon env-horizon--menu">
-      <!-- viewBox is intentionally MUCH wider than any realistic viewport.
-           Combined with preserveAspectRatio="xMidYMax slice", the scene fills
-           the container vertically and overflows horizontally — both
-           endpoints of the shoreline always render OFF-screen, so the coast
-           reads as a distant landmass continuing past the frame. -->
-      <svg viewBox="0 0 2400 380" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-        <defs>
-          <linearGradient id="menu-wave-1" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%"  stop-color="#0c1834" stop-opacity="0.4"/>
-            <stop offset="100%" stop-color="#070f24" stop-opacity="0.9"/>
-          </linearGradient>
-          <linearGradient id="menu-wave-2" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%"  stop-color="#070f24" stop-opacity="0.85"/>
-            <stop offset="100%" stop-color="#050d1e" stop-opacity="1"/>
-          </linearGradient>
-          <radialGradient id="menu-beacon" cx="0.5" cy="0.5" r="0.5">
-            <stop offset="0%"  stop-color="#ffe7a3" stop-opacity="0.9"/>
-            <stop offset="60%" stop-color="#ffba6a" stop-opacity="0.3"/>
-            <stop offset="100%" stop-color="#ff8c42" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-
-        <!-- subtle stars distributed across the full wide sky -->
-        <g fill="#ffffff">
-          <circle cx="80"   cy="32"  r="1.0" opacity="0.85"/>
-          <circle cx="180"  cy="64"  r="0.8" opacity="0.7"/>
-          <circle cx="260"  cy="18"  r="1.2" opacity="0.9"/>
-          <circle cx="340"  cy="86"  r="0.7" opacity="0.6"/>
-          <circle cx="420"  cy="42"  r="1.1" opacity="0.85"/>
-          <circle cx="510"  cy="72"  r="0.9" opacity="0.7"/>
-          <circle cx="600"  cy="22"  r="1.0" opacity="0.85"/>
-          <circle cx="690"  cy="56"  r="0.8" opacity="0.6"/>
-          <circle cx="780"  cy="32"  r="1.2" opacity="0.95"/>
-          <circle cx="860"  cy="78"  r="0.7" opacity="0.55"/>
-          <circle cx="950"  cy="46"  r="1.0" opacity="0.85"/>
-          <circle cx="1040" cy="22"  r="1.1" opacity="0.85"/>
-          <circle cx="1120" cy="64"  r="0.8" opacity="0.65"/>
-          <circle cx="1200" cy="30"  r="1.0" opacity="0.85"/>
-          <circle cx="1280" cy="86"  r="0.8" opacity="0.7"/>
-          <circle cx="1360" cy="44"  r="1.1" opacity="0.9"/>
-          <circle cx="1450" cy="24"  r="0.7" opacity="0.55"/>
-          <circle cx="1540" cy="68"  r="0.9" opacity="0.75"/>
-          <circle cx="1640" cy="36"  r="1.0" opacity="0.85"/>
-          <circle cx="1730" cy="76"  r="0.8" opacity="0.6"/>
-          <circle cx="1820" cy="22"  r="1.2" opacity="0.95"/>
-          <circle cx="1910" cy="58"  r="0.7" opacity="0.55"/>
-          <circle cx="2000" cy="38"  r="1.0" opacity="0.85"/>
-          <circle cx="2080" cy="78"  r="0.8" opacity="0.6"/>
-          <circle cx="2160" cy="26"  r="1.1" opacity="0.9"/>
-          <circle cx="2240" cy="62"  r="0.9" opacity="0.7"/>
-          <circle cx="2320" cy="44"  r="0.7" opacity="0.55"/>
-          <!-- low-density near the horizon -->
-          <circle cx="180"  cy="108" r="0.7" opacity="0.45"/>
-          <circle cx="780"  cy="112" r="0.7" opacity="0.40"/>
-          <circle cx="1380" cy="108" r="0.7" opacity="0.45"/>
-          <circle cx="1980" cy="112" r="0.7" opacity="0.40"/>
-        </g>
-
-        <!-- far shoreline — gentle undulation across the entire wide canvas -->
-        <path d="M0,152 Q160,148 360,150 Q560,152 760,148 Q960,142 1180,146 Q1400,150 1620,146 Q1840,140 2060,146 Q2260,152 2400,150 L2400,178 L0,178 Z"
-              fill="#0a142e" opacity="0.55"/>
-
-        <!-- main coastal landform — one continuous, asymmetric profile -->
-        <path d="M0,166 Q220,162 420,164 Q620,166 820,160 Q1000,154 1140,148 Q1240,142 1300,144 Q1400,150 1520,156 Q1700,162 1900,160 Q2100,158 2280,160 Q2360,162 2400,162 L2400,202 L0,202 Z"
-              fill="#0e1a36" opacity="0.92"/>
-
-        <!-- deeper landform layer behind the main -->
-        <path d="M0,174 Q220,170 440,172 Q660,174 880,172 Q1100,170 1320,170 Q1540,168 1760,170 Q1980,172 2200,170 Q2340,170 2400,170 L2400,202 L0,202 Z"
-              fill="#091428" opacity="0.95"/>
-
-        <!-- lighthouse — anchored to the EXACT center of the wide viewBox
-             so it stays on-screen at every viewport size under slice -->
-        <g transform="translate(1200,162) scale(2.4)">
-          <circle class="m-lighthouse-beacon" cx="0" cy="-12" r="14" fill="url(#menu-beacon)"/>
-          <ellipse cx="0" cy="-1" rx="9" ry="1.6" fill="#192a4c"/>
-          <rect x="-1.6" y="-14" width="3.2" height="13" fill="#233659"/>
-          <rect x="-1.6" y="-9" width="3.2" height="1.4" fill="#0a142e"/>
-          <rect x="-2.4" y="-17" width="4.8" height="3.6" fill="#233659"/>
-          <rect x="-1.1" y="-16.6" width="2.2" height="2.8" fill="#ffe19a"/>
-          <path d="M-2.4,-17 L0,-19.6 L2.4,-17 Z" fill="#152340"/>
-        </g>
-
-        <!-- tiny distant boat light off to one side -->
-        <circle cx="740" cy="160" r="1.1" fill="#ffe19a" opacity="0.55"/>
-
-        <!-- wave layer 1 — mid distance, spans full canvas -->
-        <path d="M0,222 C260,236 520,212 780,228 C1040,242 1320,214 1600,230 C1880,244 2160,216 2400,232 L2400,380 L0,380 Z"
-              fill="url(#menu-wave-1)"/>
-
-        <!-- wave layer 2 — foreground, edge to edge -->
-        <path d="M0,272 C260,286 520,266 780,282 C1040,296 1320,266 1600,282 C1880,298 2160,268 2400,284 L2400,380 L0,380 Z"
-              fill="url(#menu-wave-2)"/>
-
-        <!-- moonlight reflections — narrow vertical streak of warm glints
-             on the water beneath the lighthouse. Drawn AFTER the waves so
-             they sit on top of the dark water rather than under it. -->
-        <g fill="#ffe7a3" opacity="0.22">
-          <ellipse cx="1200" cy="226" rx="74" ry="1.4"/>
-          <ellipse cx="1200" cy="252" rx="62" ry="1.2"/>
-          <ellipse cx="1200" cy="280" rx="50" ry="1.0"/>
-          <ellipse cx="1200" cy="310" rx="38" ry="0.8"/>
-          <ellipse cx="1200" cy="342" rx="28" ry="0.6"/>
-        </g>
-
-        <!-- solid bottom band that meets the footer -->
-        <rect x="0" y="362" width="2400" height="20" fill="#050d1e"/>
-
-        <!-- foam glints scattered across the full width -->
-        <g stroke="#ffffff" stroke-width="0.8" fill="none" opacity="0.10" stroke-linecap="round">
-          <path d="M260,246 q14,-3 26,0"/>
-          <path d="M620,252 q14,-3 26,0"/>
-          <path d="M980,246 q14,-3 26,0"/>
-          <path d="M1640,252 q14,-3 26,0"/>
-          <path d="M2080,246 q14,-3 26,0"/>
-          <path d="M420,302 q14,-3 26,0"/>
-          <path d="M1100,306 q14,-3 26,0"/>
-          <path d="M1820,302 q14,-3 26,0"/>
-        </g>
-      </svg>
-    </div>
-  </div>
-
   <footer class="site-footer">
     <p>&copy; <span id="year"></span> Island Panda &middot; 2003 Periwinkle Way, Sanibel, FL 33957 &middot; <a href="tel:+12395790783">(239) 579-0783</a></p>
   </footer>
@@ -556,6 +806,154 @@
         a.addEventListener('click', () => {
           requestAnimationFrame(() => a.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' }));
         });
+      });
+    })();
+
+    // ===== shared ocean-bg interactions (mirrored from index.html) =====
+
+    // palm coconuts: 10 clicks drops one; phase changes drop one randomly
+    (function () {
+      const palms = document.querySelectorAll('.island g.palm');
+      if (!palms.length) return;
+
+      const state = new Map();
+      palms.forEach(p => state.set(p.dataset.tree, { clicks: 0, dropped: false, resetTimer: null }));
+
+      function dropOneFrom(palm) {
+        const live = palm.querySelectorAll('.coconut:not(.fallen):not(.hidden)');
+        if (!live.length) return false;
+        const c = live[Math.floor(Math.random() * live.length)];
+        c.classList.add('fallen');
+        setTimeout(() => {
+          c.classList.remove('fallen');
+          c.classList.add('hidden');
+        }, 1700);
+        return true;
+      }
+
+      palms.forEach(palm => {
+        palm.addEventListener('click', () => {
+          const s = state.get(palm.dataset.tree);
+          if (s.dropped) return;
+          s.clicks++;
+          clearTimeout(s.resetTimer);
+          s.resetTimer = setTimeout(() => { s.clicks = 0; }, 2500);
+          if (s.clicks >= 10) {
+            if (dropOneFrom(palm)) s.dropped = true;
+            s.clicks = 0;
+          }
+        });
+      });
+
+      function currentPhase() {
+        const c = document.body.classList;
+        if (c.contains('night')) return 'night';
+        if (c.contains('dusk'))  return 'dusk';
+        if (c.contains('dawn'))  return 'dawn';
+        return 'day';
+      }
+      function regrowAll() {
+        document.querySelectorAll('.coconut.hidden').forEach(c => c.classList.remove('hidden'));
+        state.forEach(s => { s.clicks = 0; s.dropped = false; });
+      }
+      function onPhaseChange() {
+        const arr = Array.from(palms);
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        for (const palm of arr) {
+          if (dropOneFrom(palm)) break;
+        }
+        setTimeout(regrowAll, 4000);
+      }
+      let lastPhase = currentPhase();
+      const obs = new MutationObserver(() => {
+        const p = currentPhase();
+        if (p !== lastPhase) { lastPhase = p; onPhaseChange(); }
+      });
+      obs.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    })();
+
+    // shells: click to kick into the water, restore on phase change
+    (function () {
+      const shells = document.querySelectorAll('.island g.shell');
+      if (!shells.length) return;
+
+      function spawnSplash(shell) {
+        const r = shell.getBoundingClientRect();
+        const cx = r.left + r.width  / 2 + 14 + window.scrollX;
+        const cy = r.top  + r.height / 2 + 28 + window.scrollY;
+        const s = document.createElement('span');
+        s.className = 'shell-splash';
+        s.style.left = cx + 'px';
+        s.style.top  = cy + 'px';
+        document.body.appendChild(s);
+        s.addEventListener('animationend', () => s.remove());
+      }
+
+      shells.forEach(shell => {
+        shell.addEventListener('click', () => {
+          if (shell.classList.contains('kicked')) return;
+          shell.classList.add('kicked');
+          setTimeout(() => spawnSplash(shell), 1000);
+        });
+      });
+
+      let lastPhase = '';
+      function currentPhase() {
+        const c = document.body.classList;
+        if (c.contains('night')) return 'night';
+        if (c.contains('dusk'))  return 'dusk';
+        if (c.contains('dawn'))  return 'dawn';
+        return 'day';
+      }
+      lastPhase = currentPhase();
+      const obs = new MutationObserver(() => {
+        const p = currentPhase();
+        if (p !== lastPhase) {
+          lastPhase = p;
+          shells.forEach(s => s.classList.remove('kicked'));
+        }
+      });
+      obs.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    })();
+
+    // sailboat easter egg: 10 clicks → tips over and sinks
+    (function () {
+      const boat = document.querySelector('.sailboat');
+      if (!boat) return;
+      let clicks = 0, resetTimer;
+
+      function spawnBubbles() {
+        const r = boat.getBoundingClientRect();
+        const cx = r.left + r.width / 2 + window.scrollX;
+        const cy = r.top + r.height * 0.6 + window.scrollY;
+        for (let i = 0; i < 10; i++) {
+          const b = document.createElement('span');
+          b.className = 'sail-bubble';
+          const size = 6 + Math.random() * 10;
+          b.style.width = b.style.height = size + 'px';
+          b.style.left = (cx - size / 2 + (Math.random() - 0.5) * 60) + 'px';
+          b.style.top  = (cy - size / 2) + 'px';
+          b.style.setProperty('--bx', ((Math.random() - 0.5) * 80) + 'px');
+          b.style.animationDelay = (Math.random() * 0.8) + 's';
+          document.body.appendChild(b);
+          b.addEventListener('animationend', () => b.remove());
+        }
+      }
+
+      boat.addEventListener('click', () => {
+        if (boat.classList.contains('sinking')) return;
+        clicks++;
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(() => { clicks = 0; }, 1500);
+        if (clicks >= 10) {
+          clicks = 0;
+          boat.classList.add('sinking');
+          spawnBubbles();
+          setTimeout(() => boat.classList.remove('sinking'), 30_000);
+        }
       });
     })();
   </script>

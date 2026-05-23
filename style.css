@@ -4574,39 +4574,30 @@ body.menu-page main,
 body.menu-page .menu-hero,
 body.menu-page footer.site-footer { position: relative; z-index: 1; }
 
-/* ----- menu hero typography: mirror the homepage hero (dark on light sky,
-   cream on night sky). Same phase-aware behavior, no menu-specific overrides. */
-body.menu-page .menu-hero h1 {
-  color: #091532;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
-}
-body.menu-page .menu-hero .lede {
-  color: #1c2a45;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
-}
+/* ----- menu hero typography on the cream tile: dark text, phase-stable ----- */
+body.menu-page .menu-hero h1 { color: #091532; }
+body.menu-page .menu-hero .lede { color: #1c2a45; }
 body.menu-page .menu-hero .lede a { color: var(--coral-deep); font-weight: 700; }
 body.menu-page .menu-hero .lede a:hover { color: var(--coral); }
-
-body.dawn.menu-page .menu-hero h1,
-body.dusk.menu-page .menu-hero h1 { color: #1d2a4a; }
-body.night.menu-page .menu-hero h1 {
-  color: #fef0c5;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
-}
-body.night.menu-page .menu-hero .lede {
-  color: #e9eef9;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-}
-body.night.menu-page .menu-hero .lede a { color: #ffba7e; }
 
 /* wider container so the menu doesn't feel like it's floating in a void */
 .menu-main {
   max-width: 1080px;
   padding: 28px 28px 96px;
 }
+/* menu hero gets the same cream-tile treatment as the menu sections below,
+   so the entire page reads as cream tiles floating on the ocean-bg */
 .menu-hero {
   max-width: 1080px;
-  padding: 72px 28px 28px;
+  margin: 28px auto 0;
+  padding: 44px 48px 36px;
+  background: #fffaf0;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 24px 60px rgba(0, 0, 0, 0.32),
+    0 6px 18px rgba(0, 0, 0, 0.22);
 }
 
 /* hero kicker matches the homepage v2 kicker style */

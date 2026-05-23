@@ -3044,24 +3044,6 @@ body.night .hero-visual-halo {
   margin-bottom: -1px;
 }
 
-/* menu page hero wave divider — same shape as homepage hero-wave so the
-   two pages share one visual language */
-.menu-hero { position: relative; padding-bottom: 60px; }
-.menu-hero-wave {
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  display: block;
-  width: 100%;
-  height: 90px;
-  pointer-events: none;
-  z-index: 1;
-}
-@media (max-width: 720px) {
-  .menu-hero { padding-bottom: 36px; }
-  .menu-hero-wave { height: 60px; }
-}
 
 @media (max-width: 980px) {
   .hero-grid {

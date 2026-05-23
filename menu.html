@@ -128,6 +128,16 @@
   </script>
 </head>
 <body class="menu-page">
+
+  <!-- ============================================================
+       ATMOSPHERE — restrained, edge-only.
+       Just a phase-aware glow under the nav + side vignette.
+       All scene elements (sun, island, lighthouse, palms) removed —
+       the cinematic scene lives in the footer transition only.
+       ============================================================ -->
+  <div class="menu-atmosphere" aria-hidden="true"></div>
+
+  <!-- ===================== NAV ===================== -->
   <header class="nav" id="nav">
     <div class="nav-bamboo nav-bamboo-top"    aria-hidden="true"></div>
     <div class="nav-bamboo nav-bamboo-bottom" aria-hidden="true"></div>
@@ -143,26 +153,32 @@
     </nav>
   </header>
 
+  <!-- ===================== HERO ===================== -->
   <header class="menu-hero">
     <div class="menu-hero-inner">
       <p class="kicker">Our Menu</p>
       <h1>Fresh Sushi · Tropical Poke · Sizzling Hibachi</h1>
-      <p class="lede">Made fresh on Sanibel Island. Dine in, take out, or call ahead — <a href="tel:+12395790783">(239) 579-0783</a>.</p>
-
-      <nav class="menu-jump" aria-label="Jump to menu section">
-        <a href="#appetizers">Appetizers</a>
-        <a href="#poke">Poke Bowls</a>
-        <a href="#hibachi">Hibachi</a>
-        <a href="#kitchen">Kitchen</a>
-        <a href="#kids">Kids</a>
-        <a href="#classic-rolls">Classic Rolls</a>
-        <a href="#specialty-rolls">Specialty Rolls</a>
-      </nav>
+      <p class="lede">Made fresh on Sanibel. Dine in, take out, or call ahead &mdash; <a class="nowrap" href="tel:+12395790783">(239)&nbsp;579-0783</a>.</p>
     </div>
   </header>
 
+  <!-- ===================== STICKY CATEGORY NAV ===================== -->
+  <nav class="menu-jump-sticky" id="menuJump" aria-label="Jump to menu section">
+    <div class="menu-jump-inner">
+      <a href="#appetizers">Appetizers</a>
+      <a href="#poke">Poke Bowls</a>
+      <a href="#hibachi">Hibachi</a>
+      <a href="#kitchen">Kitchen</a>
+      <a href="#kids">Kids</a>
+      <a href="#classic-rolls">Classic Rolls</a>
+      <a href="#specialty-rolls">Specialty Rolls</a>
+    </div>
+  </nav>
+
+  <!-- ===================== MENU ===================== -->
   <main class="menu-main">
     <section class="menu-section" id="appetizers">
+      <p class="menu-section-kicker">To Start</p>
       <h2 class="menu-h2">Appetizers</h2>
       <ul class="menu-list">
         <li><span class="m-name">Egg Rolls</span><span class="m-dots"></span><span class="m-price">8</span></li>
@@ -175,7 +191,8 @@
     </section>
 
     <section class="menu-section feature" id="poke">
-      <h2 class="menu-h2">Poke Bowls <span class="menu-h2-price">16</span></h2>
+      <p class="menu-section-kicker">Build Your Own</p>
+      <h2 class="menu-h2">Poke Bowls <span class="menu-h2-price">$16</span></h2>
       <p class="menu-blurb">Bed of sushi rice with your choice of protein, topped with mango, pineapple, avocado, cucumber, seaweed salad, edamame, mixed greens, masago, and scallions.</p>
 
       <div class="chip-row">
@@ -194,6 +211,7 @@
     </section>
 
     <section class="menu-section" id="hibachi">
+      <p class="menu-section-kicker">From the Grill</p>
       <h2 class="menu-h2">Hibachi</h2>
       <p class="menu-blurb">Grilled with mushroom, zucchini, onion, and bean sprouts. Served with Yum Yum sauce and Garlic Steak sauce.</p>
       <ul class="menu-list">
@@ -209,6 +227,7 @@
     </section>
 
     <section class="menu-section" id="kitchen">
+      <p class="menu-section-kicker">From the Kitchen</p>
       <h2 class="menu-h2">Kitchen Specials</h2>
       <ul class="menu-list">
         <li>
@@ -222,6 +241,7 @@
     </section>
 
     <section class="menu-section" id="kids">
+      <p class="menu-section-kicker">For the Little Ones</p>
       <h2 class="menu-h2">Kids Meal</h2>
       <ul class="menu-list">
         <li>
@@ -235,6 +255,7 @@
     </section>
 
     <section class="menu-section rolls" id="classic-rolls">
+      <p class="menu-section-kicker">Hand-Rolled</p>
       <h2 class="menu-h2">Classic Rolls</h2>
       <ul class="menu-list">
         <li><span class="m-name">*California <em class="m-note">— kani, krab, avocado, cucumber</em></span><span class="m-dots"></span><span class="m-price">12</span></li>
@@ -249,6 +270,7 @@
     </section>
 
     <section class="menu-section rolls feature" id="specialty-rolls">
+      <p class="menu-section-kicker">Chef's Picks</p>
       <h2 class="menu-h2">Chef's Specialty Rolls</h2>
       <ul class="menu-list">
         <li class="featured">
@@ -277,12 +299,265 @@
     </p>
   </main>
 
+  <!-- ===================== PREMIUM COASTAL FOOTER ===================== -->
+  <div class="coastal-zone coastal-zone--menu" aria-hidden="false">
+    <div class="env-horizon env-horizon--menu">
+      <!-- viewBox is intentionally MUCH wider than any realistic viewport.
+           Combined with preserveAspectRatio="xMidYMax slice", the scene fills
+           the container vertically and overflows horizontally — both
+           endpoints of the shoreline always render OFF-screen, so the coast
+           reads as a distant landmass continuing past the frame. -->
+      <svg viewBox="0 0 2400 380" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="menu-wave-1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"  stop-color="#0c1834" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#070f24" stop-opacity="0.9"/>
+          </linearGradient>
+          <linearGradient id="menu-wave-2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"  stop-color="#070f24" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#050d1e" stop-opacity="1"/>
+          </linearGradient>
+          <radialGradient id="menu-beacon" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0%"  stop-color="#ffe7a3" stop-opacity="0.9"/>
+            <stop offset="60%" stop-color="#ffba6a" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#ff8c42" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- subtle stars distributed across the full wide sky -->
+        <g fill="#ffffff">
+          <circle cx="80"   cy="32"  r="1.0" opacity="0.85"/>
+          <circle cx="180"  cy="64"  r="0.8" opacity="0.7"/>
+          <circle cx="260"  cy="18"  r="1.2" opacity="0.9"/>
+          <circle cx="340"  cy="86"  r="0.7" opacity="0.6"/>
+          <circle cx="420"  cy="42"  r="1.1" opacity="0.85"/>
+          <circle cx="510"  cy="72"  r="0.9" opacity="0.7"/>
+          <circle cx="600"  cy="22"  r="1.0" opacity="0.85"/>
+          <circle cx="690"  cy="56"  r="0.8" opacity="0.6"/>
+          <circle cx="780"  cy="32"  r="1.2" opacity="0.95"/>
+          <circle cx="860"  cy="78"  r="0.7" opacity="0.55"/>
+          <circle cx="950"  cy="46"  r="1.0" opacity="0.85"/>
+          <circle cx="1040" cy="22"  r="1.1" opacity="0.85"/>
+          <circle cx="1120" cy="64"  r="0.8" opacity="0.65"/>
+          <circle cx="1200" cy="30"  r="1.0" opacity="0.85"/>
+          <circle cx="1280" cy="86"  r="0.8" opacity="0.7"/>
+          <circle cx="1360" cy="44"  r="1.1" opacity="0.9"/>
+          <circle cx="1450" cy="24"  r="0.7" opacity="0.55"/>
+          <circle cx="1540" cy="68"  r="0.9" opacity="0.75"/>
+          <circle cx="1640" cy="36"  r="1.0" opacity="0.85"/>
+          <circle cx="1730" cy="76"  r="0.8" opacity="0.6"/>
+          <circle cx="1820" cy="22"  r="1.2" opacity="0.95"/>
+          <circle cx="1910" cy="58"  r="0.7" opacity="0.55"/>
+          <circle cx="2000" cy="38"  r="1.0" opacity="0.85"/>
+          <circle cx="2080" cy="78"  r="0.8" opacity="0.6"/>
+          <circle cx="2160" cy="26"  r="1.1" opacity="0.9"/>
+          <circle cx="2240" cy="62"  r="0.9" opacity="0.7"/>
+          <circle cx="2320" cy="44"  r="0.7" opacity="0.55"/>
+          <!-- low-density near the horizon -->
+          <circle cx="180"  cy="108" r="0.7" opacity="0.45"/>
+          <circle cx="780"  cy="112" r="0.7" opacity="0.40"/>
+          <circle cx="1380" cy="108" r="0.7" opacity="0.45"/>
+          <circle cx="1980" cy="112" r="0.7" opacity="0.40"/>
+        </g>
+
+        <!-- far shoreline — gentle undulation across the entire wide canvas -->
+        <path d="M0,152 Q160,148 360,150 Q560,152 760,148 Q960,142 1180,146 Q1400,150 1620,146 Q1840,140 2060,146 Q2260,152 2400,150 L2400,178 L0,178 Z"
+              fill="#0a142e" opacity="0.55"/>
+
+        <!-- main coastal landform — one continuous, asymmetric profile -->
+        <path d="M0,166 Q220,162 420,164 Q620,166 820,160 Q1000,154 1140,148 Q1240,142 1300,144 Q1400,150 1520,156 Q1700,162 1900,160 Q2100,158 2280,160 Q2360,162 2400,162 L2400,202 L0,202 Z"
+              fill="#0e1a36" opacity="0.92"/>
+
+        <!-- deeper landform layer behind the main -->
+        <path d="M0,174 Q220,170 440,172 Q660,174 880,172 Q1100,170 1320,170 Q1540,168 1760,170 Q1980,172 2200,170 Q2340,170 2400,170 L2400,202 L0,202 Z"
+              fill="#091428" opacity="0.95"/>
+
+        <!-- lighthouse — anchored to the EXACT center of the wide viewBox
+             so it stays on-screen at every viewport size under slice -->
+        <g transform="translate(1200,162) scale(2.4)">
+          <circle class="m-lighthouse-beacon" cx="0" cy="-12" r="14" fill="url(#menu-beacon)"/>
+          <ellipse cx="0" cy="-1" rx="9" ry="1.6" fill="#192a4c"/>
+          <rect x="-1.6" y="-14" width="3.2" height="13" fill="#233659"/>
+          <rect x="-1.6" y="-9" width="3.2" height="1.4" fill="#0a142e"/>
+          <rect x="-2.4" y="-17" width="4.8" height="3.6" fill="#233659"/>
+          <rect x="-1.1" y="-16.6" width="2.2" height="2.8" fill="#ffe19a"/>
+          <path d="M-2.4,-17 L0,-19.6 L2.4,-17 Z" fill="#152340"/>
+        </g>
+
+        <!-- tiny distant boat light off to one side -->
+        <circle cx="740" cy="160" r="1.1" fill="#ffe19a" opacity="0.55"/>
+
+        <!-- wave layer 1 — mid distance, spans full canvas -->
+        <path d="M0,222 C260,236 520,212 780,228 C1040,242 1320,214 1600,230 C1880,244 2160,216 2400,232 L2400,380 L0,380 Z"
+              fill="url(#menu-wave-1)"/>
+
+        <!-- wave layer 2 — foreground, edge to edge -->
+        <path d="M0,272 C260,286 520,266 780,282 C1040,296 1320,266 1600,282 C1880,298 2160,268 2400,284 L2400,380 L0,380 Z"
+              fill="url(#menu-wave-2)"/>
+
+        <!-- moonlight reflections — narrow vertical streak of warm glints
+             on the water beneath the lighthouse. Drawn AFTER the waves so
+             they sit on top of the dark water rather than under it. -->
+        <g fill="#ffe7a3" opacity="0.22">
+          <ellipse cx="1200" cy="226" rx="74" ry="1.4"/>
+          <ellipse cx="1200" cy="252" rx="62" ry="1.2"/>
+          <ellipse cx="1200" cy="280" rx="50" ry="1.0"/>
+          <ellipse cx="1200" cy="310" rx="38" ry="0.8"/>
+          <ellipse cx="1200" cy="342" rx="28" ry="0.6"/>
+        </g>
+
+        <!-- solid bottom band that meets the footer -->
+        <rect x="0" y="362" width="2400" height="20" fill="#050d1e"/>
+
+        <!-- foam glints scattered across the full width -->
+        <g stroke="#ffffff" stroke-width="0.8" fill="none" opacity="0.10" stroke-linecap="round">
+          <path d="M260,246 q14,-3 26,0"/>
+          <path d="M620,252 q14,-3 26,0"/>
+          <path d="M980,246 q14,-3 26,0"/>
+          <path d="M1640,252 q14,-3 26,0"/>
+          <path d="M2080,246 q14,-3 26,0"/>
+          <path d="M420,302 q14,-3 26,0"/>
+          <path d="M1100,306 q14,-3 26,0"/>
+          <path d="M1820,302 q14,-3 26,0"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <p>&copy; <span id="year"></span> Island Panda &middot; 2003 Periwinkle Way, Sanibel, FL 33957 &middot; <a href="tel:+12395790783">(239) 579-0783</a></p>
   </footer>
 
+  <!-- sticky mobile bottom CTA bar — quick conversion access on phones -->
+  <nav class="mobile-cta" aria-label="Quick actions">
+    <a href="tel:+12395790783" class="mobile-cta-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span>Call</span>
+    </a>
+    <a href="index.html" class="mobile-cta-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      <span>Home</span>
+    </a>
+    <a href="https://maps.google.com/?q=2003+Periwinkle+Way+Sanibel+FL+33957" target="_blank" rel="noopener" class="mobile-cta-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>Directions</span>
+    </a>
+  </nav>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // -------- time-of-day cycle (same logic as homepage) --------
+    // URL override for previewing any phase: ?phase=day|dawn|dusk|night
+    function getPhaseOverride() {
+      const p = new URLSearchParams(location.search).get('phase');
+      return ['day', 'dawn', 'dusk', 'night'].includes(p) ? p : null;
+    }
+    function getEasternHour() {
+      const fmt = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/New_York',
+        hour: 'numeric',
+        hour12: false,
+      });
+      const h = fmt.formatToParts(new Date()).find(p => p.type === 'hour').value;
+      return parseInt(h, 10);
+    }
+    function applyTimeOfDay() {
+      const override = getPhaseOverride();
+      let phase;
+      if (override) {
+        phase = override;
+      } else {
+        const hour = getEasternHour();
+        if (hour >= 5 && hour < 7)        phase = 'dawn';
+        else if (hour >= 17 && hour < 20) phase = 'dusk';
+        else if (hour >= 20 || hour < 5)  phase = 'night';
+        else                              phase = 'day';
+      }
+      document.body.classList.remove('dawn', 'dusk', 'night');
+      if (phase !== 'day') document.body.classList.add(phase);
+    }
+    applyTimeOfDay();
+    // skip the auto re-check when an override is active (it would fight the override)
+    if (!getPhaseOverride()) setInterval(applyTimeOfDay, 60_000);
+
+    // -------- nav shrink on scroll + keep --nav-h synced live --------
+    (function () {
+      const nav = document.getElementById('nav');
+      if (!nav) return;
+
+      function syncNavHeight() {
+        const h = nav.getBoundingClientRect().height;
+        document.documentElement.style.setProperty('--nav-h', h + 'px');
+      }
+      syncNavHeight();
+
+      let ticking = false;
+      function onScroll() {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            nav.classList.toggle('nav--shrunk', window.scrollY > 80);
+            syncNavHeight();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', syncNavHeight);
+      // re-sync after the nav's padding transition settles
+      nav.addEventListener('transitionend', syncNavHeight);
+      onScroll();
+    })();
+
+    // -------- sticky menu-jump: add .is-pinned + active-section highlight --------
+    (function () {
+      const jump = document.getElementById('menuJump');
+      if (!jump) return;
+      const links = Array.from(jump.querySelectorAll('a[href^="#"]'));
+      const sections = links
+        .map(a => document.querySelector(a.getAttribute('href')))
+        .filter(Boolean);
+
+      // pin state: when the sticky bar sticks to the top of the viewport,
+      // give it the blurred panel backdrop. Use a sentinel pixel above it.
+      // (in-flow 1px div — its viewport intersection flips when the bar pins.)
+      const sentinel = document.createElement('div');
+      sentinel.style.cssText = 'height:1px; width:100%; pointer-events:none;';
+      sentinel.setAttribute('aria-hidden', 'true');
+      jump.parentNode.insertBefore(sentinel, jump);
+      const pinObs = new IntersectionObserver(([e]) => {
+        // sentinel intersects viewport → not pinned. scrolled past it → pinned.
+        jump.classList.toggle('is-pinned', e.boundingClientRect.top < 0);
+      }, { threshold: [0, 1] });
+      pinObs.observe(sentinel);
+
+      // active-link tracking based on which section is in view
+      const linkBySection = new Map();
+      sections.forEach((sec, i) => linkBySection.set(sec, links[i]));
+      const secObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          const link = linkBySection.get(e.target);
+          if (!link) return;
+          if (e.isIntersecting) {
+            links.forEach(a => a.classList.remove('active'));
+            link.classList.add('active');
+          }
+        });
+      }, {
+        rootMargin: '-40% 0px -50% 0px',
+        threshold: 0,
+      });
+      sections.forEach(s => secObs.observe(s));
+
+      // when clicking a jump link, scroll the link into view inside the
+      // horizontal scroller so the active pill stays visible on mobile
+      links.forEach(a => {
+        a.addEventListener('click', () => {
+          requestAnimationFrame(() => a.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' }));
+        });
+      });
+    })();
   </script>
 </body>
 </html>

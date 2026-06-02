@@ -44,6 +44,12 @@
     },
     "openingHoursSpecification": [
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "11:00", "closes": "20:00" }
+    ],
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "20", "bestRating": "5", "worstRating": "1" },
+    "review": [
+      { "@type": "Review", "author": { "@type": "Person", "name": "Christian Laquis" }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "So happy I tried this! As a local, exactly what the island needed. When I'm craving great sushi, I come here every day!" },
+      { "@type": "Review", "author": { "@type": "Person", "name": "Jess Morgan" }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Tried 3 different sushi rolls to start and ended up coming back for 2 more! All were delicious and we'll definitely be back next time we're in town!" },
+      { "@type": "Review", "author": { "@type": "Person", "name": "Jocelyn Wiltanger" }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "The three sushi rolls we got were all delicious and so was the hibachi! If I'm ever back on the island I hope I can come back here for some good sushi!" }
     ]
   }
   </script>
@@ -977,6 +983,7 @@
             <a href="tel:+12395790783" class="btn btn-primary btn-lg js-call-cta">Call to Order</a>
             <a href="menu.html" class="btn btn-ghost-light">View the Menu &rarr;</a>
           </div>
+          <p class="hero-services">Now offering <strong>online ordering</strong> &middot; pickup &middot; delivery</p>
           <div class="hero-meta-strip">
             <a class="hero-meta-link" href="https://maps.google.com/?q=2003+Periwinkle+Way+Sanibel+FL+33957" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -1144,7 +1151,7 @@
         <header class="section-head section-head--center">
           <p class="kicker kicker--dark">From the Floor</p>
           <h2 class="section-title section-title--display section-title--dark">A look <em>inside.</em></h2>
-          <p class="section-lede">The room, the people, the plates. Drop in, sit a while, tag us if you like what you see.</p>
+          <p class="section-lede">The room, the people, the plates. Take a look &mdash; and tag us if you like what you see.</p>
         </header>
         <div class="gallery">
           <a href="photos/poke-bowl.jpg" class="gallery-item feature" target="_blank" rel="noopener">
@@ -1154,7 +1161,7 @@
             <img src="photos/team.jpg" alt="The Island Panda team in front of the logo wall" loading="lazy" />
           </a>
           <a href="photos/customer-sushi-boat.jpg" class="gallery-item" target="_blank" rel="noopener">
-            <img src="photos/customer-sushi-boat.jpg" alt="Customer enjoying a sushi boat on the patio" loading="lazy" />
+            <img src="photos/customer-sushi-boat.jpg" alt="A customer's Island Panda sushi boat" loading="lazy" />
           </a>
           <a href="photos/staff-poke.jpg" class="gallery-item" target="_blank" rel="noopener">
             <img src="photos/staff-poke.jpg" alt="Server holding a fresh poke bowl in front of the logo wall" loading="lazy" />
@@ -1217,7 +1224,7 @@
             <p class="kicker kicker--dark">Our Story</p>
             <h2 class="section-title section-title--display section-title--dark">Sanibel sushi with a tropical accent.</h2>
             <p class="story-lede">A coastal sushi-and-poke spot built around fresh fish, tropical produce, and the kind of laid-back Sanibel afternoon a meal should taste like.</p>
-            <p class="story-body">Locals, vacationers, lunch breaks, beach days, easy family dinners &mdash; our kitchen is built for the way Sanibel actually eats. Grab a roll, build a bowl, or pull up a stool for hibachi after a day in the sun.</p>
+            <p class="story-body">Locals, vacationers, lunch breaks, beach days, easy family dinners &mdash; our kitchen is built for the way Sanibel actually eats. Grab a roll, build a bowl, or take home some hibachi after a day in the sun.</p>
             <p class="story-tagline-v2"><span>Fresh.</span><span>Coastal.</span><span>Tropical.</span></p>
 
             <div class="story-contact">
@@ -1251,6 +1258,38 @@
          no theatrical sky/palms/sun. The atmosphere sits at the very
          bottom of the scene as a small distant horizon hint.
          ================================================================== -->
+    <!-- ===================== REVIEWS ===================== -->
+    <section class="reviews-section" id="reviews" aria-labelledby="reviews-title">
+      <div class="reviews-inner">
+        <p class="kicker">What Sanibel's Saying</p>
+        <h2 class="section-title section-title--display" id="reviews-title">Five stars,<br/><em>start to finish.</em></h2>
+        <a class="reviews-badge" href="https://share.google/EWFPctwxYhIj4DZeG" target="_blank" rel="noopener" aria-label="5.0 stars from 20 Google reviews — read them on Google">
+          <span class="reviews-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="reviews-badge-text"><strong>5.0</strong> on Google &middot; 20 reviews</span>
+        </a>
+
+        <ul class="reviews-grid">
+          <li class="review-card">
+            <span class="review-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <p class="review-quote">&ldquo;So happy I tried this! As a local, exactly what the island needed. When I'm craving great sushi, I come here every day!&rdquo;</p>
+            <p class="review-author">Christian Laquis</p>
+          </li>
+          <li class="review-card">
+            <span class="review-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <p class="review-quote">&ldquo;Tried 3 different sushi rolls to start and ended up coming back for 2 more! All were delicious &mdash; we'll definitely be back next time we're in town!&rdquo;</p>
+            <p class="review-author">Jess Morgan</p>
+          </li>
+          <li class="review-card">
+            <span class="review-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <p class="review-quote">&ldquo;The three sushi rolls we got were all delicious and so was the hibachi! If I'm ever back on the island I hope I can come back here for some good sushi!&rdquo;</p>
+            <p class="review-author">Jocelyn Wiltanger</p>
+          </li>
+        </ul>
+
+        <a class="btn btn-ghost-light reviews-cta" href="https://share.google/EWFPctwxYhIj4DZeG" target="_blank" rel="noopener">Read all reviews on Google &rarr;</a>
+      </div>
+    </section>
+
     <div class="coastal-zone">
       <section class="cta-banner cta-banner-v2">
       <div class="cta-banner-inner cta-banner-inner--v2">
@@ -1261,7 +1300,7 @@
         <div class="cta-banner-content">
           <p class="cta-banner-kicker">Come Hungry</p>
           <h2 class="cta-banner-title cta-banner-title--big">Don't just look.<br/><em>Come taste it.</em></h2>
-          <p class="cta-banner-sub">Order online for pickup or delivery, call ahead and we'll have your sushi or poke ready in 15 &mdash; or walk in for hibachi, dine-in, and the Sanibel breeze. <span class="cta-banner-soft" data-order-soon>Online ordering coming soon.</span></p>
+          <p class="cta-banner-sub">Order online for pickup or delivery &mdash; or call ahead and we'll have your sushi, poke, and hibachi ready in about 15 minutes.</p>
           <div class="cta-row cta-row--banner">
             <a class="btn btn-primary-on-coral btn-lg" data-order-link target="_blank" rel="noopener" hidden>Order Online</a>
             <a href="tel:+12395790783" class="btn btn-primary-on-coral btn-lg js-call-cta">Call to Order</a>
@@ -1409,7 +1448,7 @@
       <div class="section-inner">
         <header class="section-head section-head--center">
           <p class="kicker">Visit Us on Sanibel</p>
-          <h2 class="section-title section-title--display">Pull up a stool.<br/><em>The kitchen's on.</em></h2>
+          <h2 class="section-title section-title--display">Swing on by.<br/><em>The kitchen's on.</em></h2>
           <p class="section-lede section-lede--light">Right on Periwinkle Way &mdash; minutes from the beach, the causeway, and the rest of the island.</p>
         </header>
         <div class="hours-visit hours-visit--v2">

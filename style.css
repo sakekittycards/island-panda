@@ -15,6 +15,9 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* hidden attribute must win even on elements with display:inline-flex (.btn etc.) */
+[hidden] { display: none !important; }
+
 html { scroll-behavior: smooth; }
 
 body {
@@ -1770,7 +1773,7 @@ html { scroll-padding-top: 80px; }
 }
 
 /* primary call action visually emphasized */
-.mobile-cta-btn:first-child {
+.mobile-cta-btn.mobile-cta-accent {
   background: var(--coral);
   color: var(--white);
   box-shadow: 0 4px 12px rgba(255, 140, 66, 0.35);
@@ -1780,6 +1783,47 @@ html { scroll-padding-top: 80px; }
   .mobile-cta { display: grid; }
   body { padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px)); }
 }
+
+/* ============================================================
+   ONLINE ORDERING (Toast)
+   Order Online buttons stay hidden until ORDER_URL is set in the
+   page script. When it is, the page script adds body.ordering-live,
+   the buttons appear, and the Order CTAs take the lead over Call.
+   ============================================================ */
+
+/* On light backgrounds: once ordering is live, the Call button steps
+   back from primary to a ghost so Order Online reads as THE action. */
+body.ordering-live .js-call-cta {
+  background: rgba(255, 255, 255, 0.92);
+  color: #14213d;
+  border-color: rgba(20, 33, 61, 0.35);
+  box-shadow: 0 6px 16px rgba(15, 37, 72, 0.12),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+  text-shadow: none;
+}
+/* the CTA banner sits on coral — keep the demoted Call button readable there */
+body.ordering-live .cta-banner .js-call-cta {
+  background: rgba(255, 255, 255, 0.16);
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* mobile bottom bar gains a 4th cell for Order when live */
+body.ordering-live .mobile-cta { grid-template-columns: 1fr 1fr 1fr 1fr; }
+body.ordering-live .mobile-cta-btn[data-order-link] {
+  background: var(--coral);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(255, 140, 66, 0.35);
+}
+/* …and the Call button gives up the coral accent so Order owns it */
+body.ordering-live .mobile-cta-btn.mobile-cta-accent {
+  background: rgba(29, 58, 107, 0.05);
+  color: var(--navy);
+  box-shadow: none;
+}
+
+/* menu hero Order Online button spacing */
+.menu-hero-cta { margin-top: 22px; }
 
 /* ---------- footer ---------- */
 .site-footer {

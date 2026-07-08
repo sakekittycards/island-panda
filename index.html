@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <script>
+    // Send the old Cloudflare Worker preview URL to the primary domain.
+    // Old links keep working — visitors just land on island-panda.com.
+    if (location.hostname.endsWith('.workers.dev')) {
+      location.replace('https://island-panda.com' + location.pathname + location.search + location.hash);
+    }
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Island Panda — Sushi · Poke · Hibachi | Sanibel, FL</title>
   <meta name="description" content="Island Panda — Now open in Sanibel, FL. Fresh sushi, tropical poke bowls, and sizzling hibachi at 2003 Periwinkle Way." />
